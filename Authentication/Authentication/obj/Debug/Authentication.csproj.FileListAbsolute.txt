@@ -1,6 +1,0 @@
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/bin/Debug/Authentication.exe
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/bin/Debug/Authentication.pdb
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/obj/Debug/Authentication.csproj.AssemblyReference.cache
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/obj/Debug/Authentication.csproj.CoreCompileInputs.cache
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/obj/Debug/Authentication.exe
-/Users/ameysunu/Desktop/Atlas Madness/Authentication/Authentication/obj/Debug/Authentication.pdb
