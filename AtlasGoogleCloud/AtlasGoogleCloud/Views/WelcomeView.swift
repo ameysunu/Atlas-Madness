@@ -24,6 +24,9 @@ struct WelcomeView: View {
     @State private var password: String = ""
     @State private var confirmPwd: String = ""
     @State private var register: Bool = false
+    @State private var error: String = ""
+    @State var showError = false
+    @State private var errorHead = ""
     
     var body: some View {
         VStack{
@@ -78,10 +81,31 @@ struct WelcomeView: View {
             Button(action:{
                 if register{
                     if password == confirmPwd {
-                        registerUser(userId: userId, password: password)
+                        registerUser(userId: userId, password: password){ outcome in
+                            if outcome == "Doesn't exist"{
+                                error = outcome
+                                errorHead = "Error"
+                                showError = true
+                            } else {
+                                errorHead = "Success"
+                                error = "Your account has successfully been created!"
+                            }
+                            
+                        }
+                    } else {
+                        error = "Passwords do not match"
+                        errorHead = "Error"
+                        showError = true
                     }
                 } else {
-                    loginUser(userId: userId, password: password)
+                    loginUser(userId: userId, password: password){ outcome in
+                        if outcome != "log in" {
+                            error = outcome
+                            errorHead = "Error"
+                            showError = true
+                        }
+                        
+                    }
                 }
             }){
                 if register{
@@ -131,6 +155,13 @@ struct WelcomeView: View {
             }
         }
         .padding()
+        .alert(isPresented: $showError){
+            Alert(
+                title: Text(errorHead),
+                message: Text(error),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 

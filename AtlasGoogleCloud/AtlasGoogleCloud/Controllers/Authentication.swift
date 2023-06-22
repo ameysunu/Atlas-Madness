@@ -7,7 +7,7 @@
 
 import Foundation
 
-func loginUser(userId: String, password: String){
+func loginUser(userId: String, password: String, completion: @escaping (String) -> Void){
     // check userid exists in atlas
     checkIfUserExists(userid: userId) { result in
         print(result);
@@ -18,19 +18,19 @@ func loginUser(userId: String, password: String){
                 decryptWithKMS(cipherText: pwd){ plainText in
                     if(password == plainText){
                         //log the user in
-                        print("log in")
+                        completion("log in")
                     } else {
-                        print("password doesnt match")
+                        completion("Incorrect Password")
                     }
                 }
             }
         } else  {
-            print("userid not found")
+            completion("User not found in the system")
         }
     }
 }
 
-func registerUser(userId: String, password: String){
+func registerUser(userId: String, password: String, completion: @escaping (String) -> Void){
     //check userid exists in atlas
     checkIfUserExists(userid: userId) { user in
         if(user == "Doesn't exist"){
@@ -38,10 +38,12 @@ func registerUser(userId: String, password: String){
             encryptWithKMS(plainText: password) { encryptedPass in
                 // get the encrypted password and push that to atlas along with the userid
                 addUserToMongo(userid: userId, password: encryptedPass){ result in
-                    print(result)
+                    completion(result)
                 }
             }
             
+        } else {
+            completion("User exists already. Use the login page")
         }
     }
     
