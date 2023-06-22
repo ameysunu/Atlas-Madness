@@ -33,16 +33,7 @@ struct WelcomeView: View {
             }
             Spacer()
             Button(action:{
-                decryptWithKMS()
-                //encryptWithKMS(data: "Hello, World!") { result in
-                //    switch result {
-                //    case .success(let ciphertext):
-                //        print("Ciphertext: \(ciphertext)")
-                //
-                //        decryptWithKMS(data: ciphertext) { result in
-                //            switch result {
-                //            case .success(let plaintext):
-                //
+                loginUser(userId: "dfdfdf", password: "testData")
             }){
                 Text("Login")
                     .font(.custom("EBGaramond-Regular", size: 25))
