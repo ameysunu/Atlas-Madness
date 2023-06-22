@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770F897A2A4495DB006C6509 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 770F89792A4495DB006C6509 /* Secrets.xcconfig */; };
 		7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712E9B72A438A51006B5142 /* AtlasGoogleCloudApp.swift */; };
 		7712E9BA2A438A51006B5142 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712E9B92A438A51006B5142 /* ContentView.swift */; };
 		7712E9BC2A438A52006B5142 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7712E9BB2A438A52006B5142 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		770F89792A4495DB006C6509 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		7712E9B42A438A51006B5142 /* AtlasGoogleCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasGoogleCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7712E9B72A438A51006B5142 /* AtlasGoogleCloudApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlasGoogleCloudApp.swift; sourceTree = "<group>"; };
 		7712E9B92A438A51006B5142 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 		7712E9AB2A438A51006B5142 = {
 			isa = PBXGroup;
 			children = (
+				770F89792A4495DB006C6509 /* Secrets.xcconfig */,
 				7712E9B62A438A51006B5142 /* AtlasGoogleCloud */,
 				7712E9B52A438A51006B5142 /* Products */,
 			);
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7712E9BF2A438A52006B5142 /* Preview Assets.xcassets in Resources */,
+				770F897A2A4495DB006C6509 /* Secrets.xcconfig in Resources */,
 				7712E9D42A438EF2006B5142 /* EBGaramond-Regular.otf in Resources */,
 				7712E9BC2A438A52006B5142 /* Assets.xcassets in Resources */,
 				7712E9D32A438EF2006B5142 /* EBGaramond-Italic.otf in Resources */,
@@ -189,6 +193,7 @@
 /* Begin XCBuildConfiguration section */
 		7712E9C02A438A52006B5142 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 770F89792A4495DB006C6509 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -249,6 +254,7 @@
 		};
 		7712E9C12A438A52006B5142 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 770F89792A4495DB006C6509 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

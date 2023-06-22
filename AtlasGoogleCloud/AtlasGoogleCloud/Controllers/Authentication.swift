@@ -123,6 +123,7 @@ func testExec(){
 func textEXXec(){
     // Set the request URL
     let url = URL(string: "https://cloudkms.googleapis.com/v1/projects/admin-beaker-290608/locations/europe-west2/keyRings/Test/cryptoKeys/users:decrypt")!
+    print(Bundle.main.object(forInfoDictionaryKey: "OAUTH_KEY") as? String)
 
     // Create the request object
     var request = URLRequest(url: url)
