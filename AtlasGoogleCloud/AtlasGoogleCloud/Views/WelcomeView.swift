@@ -19,8 +19,12 @@ struct WelcomeView: View {
             return "Evening"
         }
     }
+    
     @State private var userId: String = ""
     @State private var password: String = ""
+    @State private var confirmPwd: String = ""
+    @State private var register: Bool = false
+    
     var body: some View {
         VStack{
             HStack{
@@ -34,39 +38,90 @@ struct WelcomeView: View {
                 Spacer()
             }
             Spacer()
-            TextField("User ID",text: $userId)
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 5.0)
-                    .stroke(lineWidth: 1.0))
-                .padding(.bottom, 10)
-                .font(.custom("EBGaramond-Regular", size: 20))
-            
-            SecureField("Password",text: $password)
-                .padding()
-                .overlay(RoundedRectangle(cornerRadius: 5.0)
-                    .stroke(lineWidth: 1.0))
-                .padding(.bottom, 10)
-                .font(.custom("EBGaramond-Regular", size: 20))
+            if register {
+                TextField("User ID",text: $userId)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(lineWidth: 1.0))
+                    .padding(.bottom, 10)
+                    .font(.custom("EBGaramond-Regular", size: 20))
+                
+                SecureField("Password",text: $password)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(lineWidth: 1.0))
+                    .padding(.bottom, 10)
+                    .font(.custom("EBGaramond-Regular", size: 20))
+                
+                SecureField("Confirm Password",text: $confirmPwd)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(lineWidth: 1.0))
+                    .padding(.bottom, 10)
+                    .font(.custom("EBGaramond-Regular", size: 20))
+                
+            } else {
+                TextField("User ID",text: $userId)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(lineWidth: 1.0))
+                    .padding(.bottom, 10)
+                    .font(.custom("EBGaramond-Regular", size: 20))
+                
+                SecureField("Password",text: $password)
+                    .padding()
+                    .overlay(RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(lineWidth: 1.0))
+                    .padding(.bottom, 10)
+                    .font(.custom("EBGaramond-Regular", size: 20))
+            }
             Button(action:{
                 loginUser(userId: userId, password: password)
             }){
-                Text("Login")
-                    .font(.custom("EBGaramond-Regular", size: 25))
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 0.1)
-                        .shadow(color: .black, radius: 10.0))
-                    .background(RoundedRectangle(cornerRadius: 10).fill(.black))
-                    .padding(.top, 20)
+                if register{
+                    Text("Register")
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .shadow(color: .black, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.black))
+                        .padding(.top, 20)
+                } else {
+                    Text("Login")
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .shadow(color: .black, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.black))
+                        .padding(.top, 20)
+                }
+                    
                 
             }
-            Button(action:{}){
-                Text("Create a new account?")
-                    .foregroundColor(.black)
-                    .font(.custom("EBGaramond-Regular", size: 25))
+            if !register {
+                Button(action:{
+                    register = true
+                }){
+                    Text("Create a new account?")
+                        .foregroundColor(.black)
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                }
+            } else {
+                Button(action:{
+                    register = false
+                }){
+                    Text("Already have an account?")
+                        .foregroundColor(.black)
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                }
             }
         }
         .padding()
