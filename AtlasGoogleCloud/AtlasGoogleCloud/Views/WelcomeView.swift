@@ -33,7 +33,7 @@ struct WelcomeView: View {
             }
             Spacer()
             Button(action:{
-                textEXXec()
+                decryptWithKMS()
                 //encryptWithKMS(data: "Hello, World!") { result in
                 //    switch result {
                 //    case .success(let ciphertext):
