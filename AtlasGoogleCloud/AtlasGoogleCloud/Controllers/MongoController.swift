@@ -7,7 +7,7 @@
 
 import Foundation
 
-func addUserToMongo(userid: String, password: String) {
+func addUserToMongo(userid: String, password: String, completion: @escaping (String) -> Void) {
     guard let url = URL(string: "https://eu-west-1.aws.data.mongodb-api.com/app/data-wnfuh/endpoint/data/v1/action/insertOne") else {
         print("Invalid URL")
         return
@@ -39,7 +39,7 @@ func addUserToMongo(userid: String, password: String) {
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let error = error {
-            print("Request error: \(error)")
+            completion("Request error: \(error)")
             return
         }
         
@@ -47,7 +47,7 @@ func addUserToMongo(userid: String, password: String) {
             if let json = try? JSONSerialization.jsonObject(with: data, options: []),
                let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
                let jsonString = String(data: jsonData, encoding: .utf8) {
-                print("Response: \(jsonString)")
+                completion("Response: \(jsonString)")
             }
         }
     }

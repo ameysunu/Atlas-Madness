@@ -30,7 +30,27 @@ func loginUser(userId: String, password: String){
     }
 }
 
-func encryptWithKMS(){
+func registerUser(userId: String, password: String){
+    //check userid exists in atlas
+    checkIfUserExists(userid: userId) { user in
+        if(user == "Doesn't exist"){
+            //send the password to kms to encrypt
+            encryptWithKMS(plainText: password) { encryptedPass in
+                // get the encrypted password and push that to atlas along with the userid
+                addUserToMongo(userid: userId, password: encryptedPass){ result in
+                    print(result)
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+    
+}
+
+func encryptWithKMS(plainText: String, completion: @escaping (String) -> Void){
     // Set the request URL
     let url = URL(string: "https://cloudkms.googleapis.com/v1/projects/admin-beaker-290608/locations/europe-west2/keyRings/Test/cryptoKeys/users:encrypt")!
     let oauthkey = Bundle.main.object(forInfoDictionaryKey: "OAUTH_KEY") as! String
@@ -45,7 +65,7 @@ func encryptWithKMS(){
 
     // Set the request body data
     let jsonBody = [
-        "plaintext": "testData" // Base64-encoded string
+        "plaintext": "\(plainText)" // Base64-encoded string
     ]
     let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody)
     request.httpBody = jsonData
@@ -57,9 +77,22 @@ func encryptWithKMS(){
         if let error = error {
             print("Error: \(error)")
         } else if let data = data {
-            let responseString = String(data: data, encoding: .utf8)
-            print("Response: \(responseString ?? "")")
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                if let jsonDict = json as? [String: Any], let ciphertext = jsonDict["ciphertext"] as? String {
+                    //print("Plaintext: \(plaintext)")
+                    completion(ciphertext)
+                } else {
+                    completion("Ciphertext field not found in the response")
+                }
+            } catch {
+                completion("JSON deserialization error: \(error)")
+            }
         }
+//        } else if let data = data {
+//            let responseString = String(data: data, encoding: .utf8)
+//            print("Response: \(responseString ?? "")")
+//        }
     }
     task.resume()
     

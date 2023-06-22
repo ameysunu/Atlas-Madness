@@ -76,7 +76,13 @@ struct WelcomeView: View {
                     .font(.custom("EBGaramond-Regular", size: 20))
             }
             Button(action:{
-                loginUser(userId: userId, password: password)
+                if register{
+                    if password == confirmPwd {
+                        registerUser(userId: userId, password: password)
+                    }
+                } else {
+                    loginUser(userId: userId, password: password)
+                }
             }){
                 if register{
                     Text("Register")
