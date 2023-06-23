@@ -122,26 +122,47 @@ struct DetailView: View {
             }
             
             Spacer()
-            Button(action:{
-                print("Selected items: \(selectedTopics)")
-                print(selectedActivities)
-                if secondScreen == true {
-                    thirdScreen = true
+            if thirdScreen {
+                Button(action: {
+                    addUserPreferences(userid: username, age: age, gender: gender, topics: selectedTopics, goals: selectedActivities) { result in
+                        print(result)
+                    }
+                }){
+                    Text("Submit")
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .shadow(color: .black, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.black))
+                        .padding(.top, 20)
                 }
-                secondScreen = true
-            }){
-                Text("Next")
-                    .font(.custom("EBGaramond-Regular", size: 25))
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 0.1)
-                        .shadow(color: .black, radius: 10.0))
-                    .background(RoundedRectangle(cornerRadius: 10).fill(.black))
-                    .padding(.top, 20)
-
+            } else {
+                Button(action:{
+                    print("Selected items: \(selectedTopics)")
+                    print(selectedActivities)
+                    if secondScreen == true {
+                        thirdScreen = true
+                    } else {
+                        secondScreen = true
+                    }
+                }){
+                    Text("Next")
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .shadow(color: .black, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.black))
+                        .padding(.top, 20)
+                    
+                }
             }
         }
         .padding()
