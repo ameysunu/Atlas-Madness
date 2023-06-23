@@ -49,6 +49,7 @@ struct MoodView_Previews: PreviewProvider {
 
 struct CreateMoodView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State var mood: String = "Happy"
     let moodOptions = [
         "Happy",
@@ -162,6 +163,7 @@ struct CreateMoodView: View {
                         if secondScreen {
                             addMoodData(userid: currentUserId!, mood: mood, rating: moodSlider, notes: notes, context: context, trigger: trigger, sleepQuality: sleepQuality, appetite: appetite, energyLevel: energyLevel){ result in
                                 print(result);
+                                dismiss()
                             }
                         } else {
                             secondScreen = true
