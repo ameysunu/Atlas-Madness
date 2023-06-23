@@ -29,6 +29,7 @@ struct WelcomeView: View {
     @State var showError = false
     @State private var errorHead = ""
     @State private var navigateToLogin = false
+    @State private var navigateToHome = false
     @Binding var isLoggedIn: Bool
     
     let authToken = generateAuthToken(length: 16)
@@ -85,6 +86,7 @@ struct WelcomeView: View {
                         .font(.custom("EBGaramond-Regular", size: 20))
                 }
                 NavigationLink(destination: DetailView(), isActive: $navigateToLogin){}
+                NavigationLink(destination: HomeView(), isActive: $navigateToHome){}
                 Button(action:{
                     if register{
                         if password == confirmPwd {
@@ -111,7 +113,15 @@ struct WelcomeView: View {
                                 errorHead = "Error"
                                 showError = true
                             }
-                            navigateToLogin = true
+                            getUserPreferences(userid: userId){ result in
+                                if result == "true" {
+                                    print("user pref already set")
+                                    navigateToHome = true
+                                } else {
+                                    print("user pref not set")
+                                    navigateToLogin = true
+                                }
+                            }
                             saveAuthToken(authToken)
                         }
                     }

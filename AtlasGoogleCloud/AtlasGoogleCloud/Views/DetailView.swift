@@ -124,7 +124,7 @@ struct DetailView: View {
             Spacer()
             if thirdScreen {
                 Button(action: {
-                    addUserPreferences(userid: username, age: age, gender: gender, topics: selectedTopics, goals: selectedActivities) { result in
+                    addUserPreferences(userid: username, age: age, gender: gender, topics: selectedTopics, goals: selectedActivities, preferences: true) { result in
                         print(result)
                     }
                 }){

@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         Group{
             if isLoggedIn {
-                DetailView()
+                HomeView()
             } else {
                 WelcomeView(isLoggedIn: $isLoggedIn)
             }

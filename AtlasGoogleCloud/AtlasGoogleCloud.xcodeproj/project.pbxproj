@@ -20,6 +20,7 @@
 		773B263E2A44E80C0065D197 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B263D2A44E80C0065D197 /* Models.swift */; };
 		773B26422A44F8910065D197 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B26412A44F8910065D197 /* DetailView.swift */; };
 		777F023E2A459A2C0056A392 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 777F023D2A459A2C0056A392 /* KeychainAccess */; };
+		777F02402A45BB7B0056A392 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F023F2A45BB7B0056A392 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		7712E9D62A4394AB006B5142 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		773B263D2A44E80C0065D197 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		773B26412A44F8910065D197 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		777F023F2A45BB7B0056A392 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				7712E9C52A438AC1006B5142 /* WelcomeView.swift */,
 				773B26412A44F8910065D197 /* DetailView.swift */,
+				777F023F2A45BB7B0056A392 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				7712E9C62A438AC1006B5142 /* WelcomeView.swift in Sources */,
 				773B26422A44F8910065D197 /* DetailView.swift in Sources */,
 				773B263E2A44E80C0065D197 /* Models.swift in Sources */,
+				777F02402A45BB7B0056A392 /* HomeView.swift in Sources */,
 				7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */,
 				7712E9D72A4394AB006B5142 /* Authentication.swift in Sources */,
 			);
