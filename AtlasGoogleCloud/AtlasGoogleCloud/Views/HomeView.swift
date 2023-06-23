@@ -9,9 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack{
-            Text("Hello, World!")
-        }
+        TabView {
+                   MainView()
+                        .tabItem {
+                            Label("Home", systemImage: "house.fill")
+                        }
+
+                    MoodView()
+                        .tabItem {
+                            Label("Mood", systemImage: "lasso.and.sparkles")
+                        }
+                }
         .padding()
         .navigationBarBackButtonHidden()
     }

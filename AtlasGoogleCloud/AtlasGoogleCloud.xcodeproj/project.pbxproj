@@ -21,6 +21,8 @@
 		773B26422A44F8910065D197 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B26412A44F8910065D197 /* DetailView.swift */; };
 		777F023E2A459A2C0056A392 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 777F023D2A459A2C0056A392 /* KeychainAccess */; };
 		777F02402A45BB7B0056A392 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F023F2A45BB7B0056A392 /* HomeView.swift */; };
+		777F02442A45D87F0056A392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F02432A45D87F0056A392 /* MainView.swift */; };
+		777F02472A45DD070056A392 /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F02462A45DD070056A392 /* MoodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		773B263D2A44E80C0065D197 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		773B26412A44F8910065D197 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		777F023F2A45BB7B0056A392 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		777F02432A45D87F0056A392 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		777F02462A45DD070056A392 /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				7712E9C52A438AC1006B5142 /* WelcomeView.swift */,
 				773B26412A44F8910065D197 /* DetailView.swift */,
 				777F023F2A45BB7B0056A392 /* HomeView.swift */,
+				777F02452A45D8850056A392 /* Pages */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +133,15 @@
 				773B263D2A44E80C0065D197 /* Models.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		777F02452A45D8850056A392 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				777F02432A45D87F0056A392 /* MainView.swift */,
+				777F02462A45DD070056A392 /* MoodView.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				770F89832A449ED4006C6509 /* MongoController.swift in Sources */,
+				777F02442A45D87F0056A392 /* MainView.swift in Sources */,
 				7712E9BA2A438A51006B5142 /* ContentView.swift in Sources */,
 				7712E9C62A438AC1006B5142 /* WelcomeView.swift in Sources */,
 				773B26422A44F8910065D197 /* DetailView.swift in Sources */,
@@ -217,6 +232,7 @@
 				777F02402A45BB7B0056A392 /* HomeView.swift in Sources */,
 				7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */,
 				7712E9D72A4394AB006B5142 /* Authentication.swift in Sources */,
+				777F02472A45DD070056A392 /* MoodView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
