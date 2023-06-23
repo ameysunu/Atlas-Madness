@@ -9,12 +9,14 @@ import Foundation
 import KeychainAccess
 
 let keychain = Keychain(service: "me.amey.AtlasGoogleCloud")
+let currentUserId = getLoginToken()
 
 func loginUser(userId: String, password: String, completion: @escaping (String) -> Void){
     // check userid exists in atlas
     checkIfUserExists(userid: userId) { result in
         print(result);
         if(result == userId){
+            saveLoginToken(result)
             // retrieve the password from mongodb
             getUserPassword(userid: userId){ pwd in
             // decrypt the mongodb password.
@@ -176,8 +178,26 @@ func saveAuthToken(_ token: String) {
  func clearAuthToken() {
     do {
         try keychain.remove("authToken")
+        try keychain.remove("userid")
     } catch {
         print("Failed to clear authentication token: \(error.localizedDescription)")
     }
 }
 
+
+func saveLoginToken(_ token: String) {
+    do {
+        try keychain.set(token, key: "userid")
+    } catch {
+        print("Failed to save authentication token: \(error.localizedDescription)")
+    }
+}
+
+ func getLoginToken() -> String? {
+        do {
+            return try keychain.get("userid")
+        } catch {
+            print("Failed to retrieve authentication token: \(error.localizedDescription)")
+            return nil
+        }
+    }

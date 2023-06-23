@@ -159,7 +159,13 @@ struct CreateMoodView: View {
                         .padding(.bottom, 10)
                 }
                     Button(action:{
-                        secondScreen = true
+                        if secondScreen {
+                            addMoodData(userid: currentUserId!, mood: mood, rating: moodSlider, notes: notes, context: context, trigger: trigger, sleepQuality: sleepQuality, appetite: appetite, energyLevel: energyLevel){ result in
+                                print(result);
+                            }
+                        } else {
+                            secondScreen = true
+                        }
                     }) {
                         if secondScreen {
                             Text("Submit")
