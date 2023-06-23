@@ -19,6 +19,7 @@
 		7712E9D72A4394AB006B5142 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712E9D62A4394AB006B5142 /* Authentication.swift */; };
 		773B263E2A44E80C0065D197 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B263D2A44E80C0065D197 /* Models.swift */; };
 		773B26422A44F8910065D197 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B26412A44F8910065D197 /* DetailView.swift */; };
+		777F023E2A459A2C0056A392 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 777F023D2A459A2C0056A392 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777F023E2A459A2C0056A392 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +143,9 @@
 			dependencies = (
 			);
 			name = AtlasGoogleCloud;
+			packageProductDependencies = (
+				777F023D2A459A2C0056A392 /* KeychainAccess */,
+			);
 			productName = AtlasGoogleCloud;
 			productReference = 7712E9B42A438A51006B5142 /* AtlasGoogleCloud.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +174,9 @@
 				Base,
 			);
 			mainGroup = 7712E9AB2A438A51006B5142;
+			packageReferences = (
+				777F023C2A459A2C0056A392 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 7712E9B52A438A51006B5142 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -409,6 +417,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		777F023C2A459A2C0056A392 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		777F023D2A459A2C0056A392 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 777F023C2A459A2C0056A392 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7712E9AC2A438A51006B5142 /* Project object */;
 }

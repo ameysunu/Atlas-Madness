@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeychainAccess
 
 struct WelcomeView: View {
     let hour = Calendar.current.component(.hour, from: Date())
@@ -28,6 +29,9 @@ struct WelcomeView: View {
     @State var showError = false
     @State private var errorHead = ""
     @State private var navigateToLogin = false
+    @Binding var isLoggedIn: Bool
+    
+    let authToken = generateAuthToken(length: 16)
     
     var body: some View {
         NavigationView{
@@ -108,6 +112,7 @@ struct WelcomeView: View {
                                 showError = true
                             }
                             navigateToLogin = true
+                            saveAuthToken(authToken)
                         }
                     }
                 }){
@@ -171,8 +176,8 @@ struct WelcomeView: View {
 
 
 
-struct WelcomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView()
-    }
-}
+//struct WelcomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeView(isLoggedIn: false)
+//    }
+//}
