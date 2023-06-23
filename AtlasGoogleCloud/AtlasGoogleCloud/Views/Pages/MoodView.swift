@@ -38,6 +38,11 @@ struct MoodView: View {
         .sheet(isPresented: $createMood){
             CreateMoodView()
         }
+        .onAppear{
+            getCurrentUserMoods(userid: currentUserId!){ result in
+                print(result)
+            }
+        }
     }
 }
 
@@ -91,6 +96,15 @@ struct CreateMoodView: View {
     @State var sleepQuality: Double = 0
     @State var appetite: Double = 0
     @State var energyLevel: Double = 0
+    
+    func getCurrentTimeStamp() -> String{
+        let currentDateTime = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.string(from: currentDateTime)
+        
+        return dateString
+    }
     
     var body: some View {
         ScrollView{
@@ -161,7 +175,7 @@ struct CreateMoodView: View {
                 }
                     Button(action:{
                         if secondScreen {
-                            addMoodData(userid: currentUserId!, mood: mood, rating: moodSlider, notes: notes, context: context, trigger: trigger, sleepQuality: sleepQuality, appetite: appetite, energyLevel: energyLevel){ result in
+                            addMoodData(userid: currentUserId!, mood: mood, rating: moodSlider, notes: notes, context: context, trigger: trigger, sleepQuality: sleepQuality, appetite: appetite, energyLevel: energyLevel, timeStamp: getCurrentTimeStamp()){ result in
                                 print(result);
                                 dismiss()
                             }

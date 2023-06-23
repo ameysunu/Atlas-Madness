@@ -12,3 +12,9 @@ struct TabItemData {
     let selectedImage: String
     let title: String
 }
+
+struct Moods: Identifiable {
+    let id: String
+    let mood: String
+    // Add other properties as needed
+}
