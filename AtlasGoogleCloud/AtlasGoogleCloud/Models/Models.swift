@@ -13,8 +13,19 @@ struct TabItemData {
     let title: String
 }
 
-struct Moods: Identifiable {
+struct Mood: Identifiable, Codable {
     let id: String
+    let appetite: String
+    let context: String
+    let energyLevel: String
     let mood: String
-    // Add other properties as needed
+    let notes: String
+    let rating: String
+    let sleepQuality: String
+    let trigger: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case appetite, context, energyLevel, mood, notes, rating, sleepQuality, trigger
+    }
 }
