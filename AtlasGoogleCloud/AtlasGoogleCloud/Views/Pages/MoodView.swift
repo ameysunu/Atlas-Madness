@@ -51,7 +51,9 @@ struct MoodView: View {
                     }
                 }
             } else {
-                Text("Loading JSON data...")
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(1.5)
             }
             
             Spacer()
@@ -70,6 +72,7 @@ struct MoodView: View {
                     .background(RoundedRectangle(cornerRadius: 10).fill(.black))
                     .padding(.top, 20)
             }
+            .padding(.bottom, 10)
         }
         .sheet(isPresented: $createMood){
             CreateMoodView()
