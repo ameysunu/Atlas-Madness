@@ -35,7 +35,7 @@ struct MoodView: View {
                                             .background(.yellow)
                                             .cornerRadius(5)
                                             .overlay(
-                                                NavigationLink(destination: MoodDetail(appetite: mood.appetite, context: mood.appetite, energyLevel: mood.energyLevel, mood: mood.mood, notes: mood.notes, rating: mood.rating, sleepQuality: mood.sleepQuality, trigger: mood.trigger, timestamp: mood.timestamp), tag: mood, selection: $selectedMood) {
+                                                NavigationLink(destination: MoodDetail(appetite: mood.appetite, context: mood.context, energyLevel: mood.energyLevel, mood: mood.mood, notes: mood.notes, rating: mood.rating, sleepQuality: mood.sleepQuality, trigger: mood.trigger, timestamp: mood.timestamp), tag: mood, selection: $selectedMood) {
                                                     
                                                     HStack{
                                                         VStack(alignment: .leading){
