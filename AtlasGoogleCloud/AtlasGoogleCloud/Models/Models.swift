@@ -23,9 +23,10 @@ struct Mood: Identifiable, Codable {
     let rating: String
     let sleepQuality: String
     let trigger: String
+    let timestamp: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
-        case appetite, context, energyLevel, mood, notes, rating, sleepQuality, trigger
+        case appetite, context, energyLevel, mood, notes, rating, sleepQuality, trigger, timestamp
     }
 }

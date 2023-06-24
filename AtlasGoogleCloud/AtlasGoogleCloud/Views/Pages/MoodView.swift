@@ -21,21 +21,39 @@ struct MoodView: View {
                 Spacer()
             }
             if !moodData.isEmpty {
-                ForEach(moodData) { mood in
-                    Text(mood.mood)
-                        .foregroundColor(.red)
-                    // Add a debug statement to print the mood property
-                    //print("Mood: \(mood.mood)")
-                    Button(action:{
-                        print(mood.mood)
-                    }){
-                        Text(mood.energyLevel)
+                ScrollView{
+                    ForEach(moodData) { mood in
+                        Rectangle()
+                            .cornerRadius(5)
+                            .offset(x: 4, y: 4)
+                            .frame(height: 100)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(.black, lineWidth: 5)
+                                    .background(.yellow)
+                                    .cornerRadius(5)
+                                    .overlay(
+                                        HStack{
+                                            VStack(alignment: .leading){
+                                                Text(mood.mood)
+                                                    .font(.custom("EBGaramond-Regular", size: 20))
+                                                Text(mood.timestamp)
+                                                    .font(.custom("EBGaramond-Regular", size: 20))
+                                                
+                                            }
+                                            Spacer()
+                                            Image(systemName: "arrow.forward")
+                                        }
+                                            .padding()
+                                    )
+                            )
+                            .padding()
                     }
                 }
             } else {
                 Text("Loading JSON data...")
             }
-
+            
             Spacer()
             Button(action:{
                 createMood.toggle()
@@ -58,7 +76,6 @@ struct MoodView: View {
         }
         .onAppear {
             getCurrentUserMoods(userid: currentUserId!){ result, error in
-                
                 if let error = error {
                     print(error)
                 }
