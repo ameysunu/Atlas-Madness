@@ -12,85 +12,98 @@ struct MoodView: View {
     @State var createMood: Bool = false
     @State var jsonData = ""
     @State private var moodData: [Mood] = []
+    @State private var selectedMood: Mood? = nil
     
     var body: some View {
-        VStack{
-            HStack{
-                Text("Moods")
-                    .font(.custom("EBGaramond-Regular", size: 30))
-                Spacer()
-            }
-            if !moodData.isEmpty {
-                ScrollView{
-                    ForEach(moodData) { mood in
-                        Rectangle()
-                            .cornerRadius(5)
-                            .offset(x: 4, y: 4)
-                            .frame(height: 100)
-                            .overlay(
-                                Rectangle()
-                                    .stroke(.black, lineWidth: 5)
-                                    .background(.yellow)
-                                    .cornerRadius(5)
-                                    .overlay(
-                                        HStack{
-                                            VStack(alignment: .leading){
-                                                Text(mood.mood)
-                                                    .font(.custom("EBGaramond-Regular", size: 20))
-                                                Text(mood.timestamp)
-                                                    .font(.custom("EBGaramond-Regular", size: 20))
-                                                
-                                            }
-                                            Spacer()
-                                            Image(systemName: "arrow.forward")
-                                        }
-                                            .padding()
-                                    )
-                            )
-                            .padding()
-                    }
+        NavigationView {
+            VStack{
+                HStack{
+                    Text("Moods")
+                        .font(.custom("EBGaramond-Regular", size: 30))
+                    Spacer()
                 }
-            } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .scaleEffect(1.5)
-            }
-            
-            Spacer()
-            Button(action:{
-                createMood.toggle()
-            }){
-                Text("Add")
-                    .font(.custom("EBGaramond-Regular", size: 25))
-                    .padding(8)
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(lineWidth: 0.1)
-                        .shadow(color: .black, radius: 10.0))
-                    .background(RoundedRectangle(cornerRadius: 10).fill(.black))
-                    .padding(.top, 20)
-            }
-            .padding(.bottom, 10)
-        }
-        .sheet(isPresented: $createMood){
-            CreateMoodView()
-        }
-        .onAppear {
-            getCurrentUserMoods(userid: currentUserId!){ result, error in
-                if let error = error {
-                    print(error)
+                if !moodData.isEmpty {
+                    ScrollView{
+                        ForEach(moodData) { mood in
+                                Rectangle()
+                                    .cornerRadius(5)
+                                    .offset(x: 4, y: 4)
+                                    .frame(height: 100)
+                                    .overlay(
+                                        Rectangle()
+                                            .stroke(.black, lineWidth: 5)
+                                            .background(.yellow)
+                                            .cornerRadius(5)
+                                            .overlay(
+                                                NavigationLink(destination: MoodDetail(appetite: mood.appetite, context: mood.appetite, energyLevel: mood.energyLevel, mood: mood.mood, notes: mood.notes, rating: mood.rating, sleepQuality: mood.sleepQuality, trigger: mood.trigger, timestamp: mood.timestamp), tag: mood, selection: $selectedMood) {
+                                                    
+                                                    HStack{
+                                                        VStack(alignment: .leading){
+                                                            Text(mood.mood)
+                                                                .font(.custom("EBGaramond-Regular", size: 20))
+                                                                .foregroundColor(.black)
+                                                            Text(mood.timestamp)
+                                                                .font(.custom("EBGaramond-Regular", size: 20))
+                                                                .foregroundColor(.black)
+                                                            
+                                                        }
+                                                        Spacer()
+                                                        Image(systemName: "arrow.forward")
+                                                            .foregroundColor(.black)
+                                                    }
+                                                    .padding()
+                                                }
+                                            )
+                                    )
+                                    .padding()
+                                    .onTapGesture {
+                                        selectedMood = mood
+                                    }
+                            }
+                    }
+                } else {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .scaleEffect(1.5)
                 }
                 
-                if let result = result {
-                    print(result)
-                    self.moodData = result
-                } else {
-                    print("mood data is null")
+                Spacer()
+                Button(action:{
+                    createMood.toggle()
+                }){
+                    Text("Add")
+                        .font(.custom("EBGaramond-Regular", size: 25))
+                        .padding(8)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(lineWidth: 0.1)
+                            .shadow(color: .black, radius: 10.0))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(.black))
+                        .padding(.top, 20)
+                }
+                .padding(.bottom, 10)
+            }
+            .sheet(isPresented: $createMood){
+                CreateMoodView()
+            }
+            .onAppear {
+                getCurrentUserMoods(userid: currentUserId!){ result, error in
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    if let result = result {
+                        print(result)
+                        self.moodData = result
+                    } else {
+                        print("mood data is null")
+                    }
                 }
             }
         }
+        .toolbar(.hidden)
     }
 }
 

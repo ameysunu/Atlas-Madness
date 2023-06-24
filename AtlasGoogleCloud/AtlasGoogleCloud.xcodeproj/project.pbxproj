@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770F32452A47684C00656025 /* MoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F32442A47684C00656025 /* MoodDetail.swift */; };
 		770F897C2A449986006C6509 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 770F897B2A449986006C6509 /* Secrets.xcconfig */; };
 		770F89832A449ED4006C6509 /* MongoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F89822A449ED4006C6509 /* MongoController.swift */; };
 		7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7712E9B72A438A51006B5142 /* AtlasGoogleCloudApp.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		770F32442A47684C00656025 /* MoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDetail.swift; sourceTree = "<group>"; };
 		770F897B2A449986006C6509 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		770F89822A449ED4006C6509 /* MongoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoController.swift; sourceTree = "<group>"; };
 		7712E9B42A438A51006B5142 /* AtlasGoogleCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtlasGoogleCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +142,7 @@
 			children = (
 				777F02432A45D87F0056A392 /* MainView.swift */,
 				777F02462A45DD070056A392 /* MoodView.swift */,
+				770F32442A47684C00656025 /* MoodDetail.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				777F02402A45BB7B0056A392 /* HomeView.swift in Sources */,
 				7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */,
 				7712E9D72A4394AB006B5142 /* Authentication.swift in Sources */,
+				770F32452A47684C00656025 /* MoodDetail.swift in Sources */,
 				777F02472A45DD070056A392 /* MoodView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

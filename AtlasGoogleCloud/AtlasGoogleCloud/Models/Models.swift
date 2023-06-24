@@ -13,7 +13,7 @@ struct TabItemData {
     let title: String
 }
 
-struct Mood: Identifiable, Codable {
+struct Mood: Identifiable, Codable, Hashable {
     let id: String
     let appetite: String
     let context: String
