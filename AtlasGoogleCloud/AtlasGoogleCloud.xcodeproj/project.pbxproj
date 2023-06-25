@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770475382A482FE9003ACFD9 /* GoogleCloudController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770475372A482FE9003ACFD9 /* GoogleCloudController.swift */; };
 		770F32452A47684C00656025 /* MoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F32442A47684C00656025 /* MoodDetail.swift */; };
 		770F897C2A449986006C6509 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 770F897B2A449986006C6509 /* Secrets.xcconfig */; };
 		770F89832A449ED4006C6509 /* MongoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F89822A449ED4006C6509 /* MongoController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		770475372A482FE9003ACFD9 /* GoogleCloudController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCloudController.swift; sourceTree = "<group>"; };
 		770F32442A47684C00656025 /* MoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDetail.swift; sourceTree = "<group>"; };
 		770F897B2A449986006C6509 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		770F89822A449ED4006C6509 /* MongoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MongoController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				7712E9D62A4394AB006B5142 /* Authentication.swift */,
 				770F89822A449ED4006C6509 /* MongoController.swift */,
+				770475372A482FE9003ACFD9 /* GoogleCloudController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				770F89832A449ED4006C6509 /* MongoController.swift in Sources */,
 				777F02442A45D87F0056A392 /* MainView.swift in Sources */,
+				770475382A482FE9003ACFD9 /* GoogleCloudController.swift in Sources */,
 				7712E9BA2A438A51006B5142 /* ContentView.swift in Sources */,
 				7712E9C62A438AC1006B5142 /* WelcomeView.swift in Sources */,
 				773B26422A44F8910065D197 /* DetailView.swift in Sources */,

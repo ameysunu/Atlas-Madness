@@ -97,6 +97,7 @@ struct MoodView: View {
                     if let result = result {
                         print(result)
                         self.moodData = result
+                        exportDataToCloudStorage(jsonData: result)
                     } else {
                         print("mood data is null")
                     }
