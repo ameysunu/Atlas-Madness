@@ -340,5 +340,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14A88DEB-1B01-456F-8849-EAEF7561BC79"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "getTriggerContext(completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "14A88DEB-1B01-456F-8849-EAEF7561BC79 - 2d65d12753d6c90d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AtlasGoogleCloud.getTriggerContext(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "1716">
+               </Location>
+               <Location
+                  uuid = "14A88DEB-1B01-456F-8849-EAEF7561BC79 - 2d65d12753d6c90d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AtlasGoogleCloud.getTriggerContext(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "2084">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

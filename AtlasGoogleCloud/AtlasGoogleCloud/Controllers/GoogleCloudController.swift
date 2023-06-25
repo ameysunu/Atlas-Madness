@@ -211,3 +211,60 @@ func getAverageMood(completion: @escaping (String) -> Void) {
     task.resume()
 }
 
+
+func getTriggerContext(completion: @escaping (String) -> Void) {
+    
+    let projectID = "admin-beaker-290608"
+    let datasetID = "userdataset"
+    let tableID = "MyTable"
+    
+    guard let url = URL(string: "https://bigquery.googleapis.com/bigquery/v2/projects/\(projectID)/queries") else {
+        print("Invalid URL")
+        return
+    }
+    
+    let accessToken = Bundle.main.object(forInfoDictionaryKey: "OAUTH_KEY") as! String
+    
+    // Create the query string to calculate the average rating and energy level
+    let query = """
+    #standardSQL
+    SELECT trigger, COUNT(*) AS count FROM `\(projectID).\(datasetID).\(tableID)` GROUP BY trigger ORDER BY count DESC LIMIT 1;
+    """
+    
+    // Create the request body with the query
+    let body = ["query": query]
+    let jsonData = try? JSONSerialization.data(withJSONObject: body)
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+    request.httpBody = jsonData
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Error: \(error)")
+            return
+        }
+        
+        if let data = data {
+            do {
+                // Parse the JSON response
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                      let rows = json["rows"] as? [[String: Any]],
+                      let values = rows.first?["f"] as? [[String: Any]],
+                      let trigger = values.first?["v"] as? String
+                else {
+                    completion("")
+                    return
+                }
+                completion(trigger)
+                
+            } catch {
+                print("Error parsing JSON: \(error)")
+            }
+        }
+    }
+    
+    task.resume()
+}

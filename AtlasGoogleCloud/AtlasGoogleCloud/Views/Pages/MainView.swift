@@ -12,9 +12,12 @@ struct MainView: View {
     @State var avgEnergyLevel: Double = 0.0
     @State var avgSleepLevel: Double = 0.0
     @State var averageRating: Double = 0.0
+    @State var trigger: String = ""
     @State var moodRange: String = ""
     @State var isLoading: Bool = true
     @State var isTimeout: Bool = false
+    
+    let total: Double = 10
     
     var body: some View {
         VStack{
@@ -117,6 +120,68 @@ struct MainView: View {
                         )
                     
                 }
+                HStack{
+                    Rectangle()
+                        .cornerRadius(5)
+                        .offset(x: 4, y: 4)
+                        .frame(height: 200)
+                        .overlay(
+                            Rectangle()
+                                .stroke(.black, lineWidth: 5)
+                                .background(.white)
+                                .cornerRadius(5)
+                                .overlay(
+                                    VStack{
+                                        ZStack {
+                                            Circle()
+                                                .stroke(Color.gray, lineWidth: 20)
+                                            
+                                            Circle()
+                                                .trim(from: 0, to: CGFloat(averageRating / total))
+                                                .stroke(Color.blue, lineWidth: 20)
+                                                .rotationEffect(Angle(degrees: -90))
+                                            
+                                            Text("\(averageRating, specifier: "%.1f")")
+                                                .font(.custom("EBGaramond-Regular", size: 25))
+                                                .fontWeight(.bold)
+                                        }
+                                        .frame(width: 100, height: 100)
+                                        .padding()
+                                        Text("Average mood rating")
+                                            .font(.custom("EBGaramond-Regular", size: 18))
+                                    }
+                                )
+                            
+                        )
+                    
+                    Rectangle()
+                        .cornerRadius(5)
+                        .offset(x: 4, y: 4)
+                        .frame(height: 200)
+                        .overlay(
+                            Rectangle()
+                                .stroke(.black, lineWidth: 5)
+                                .background(.purple)
+                                .cornerRadius(5)
+                                .overlay(
+                                    HStack{
+                                        VStack(alignment: .leading){
+                                            Text("Most used trigger")
+                                                .font(.custom("EBGaramond-Regular", size: 15))
+                                                .padding(.top, 5)
+                                            Text(trigger)
+                                                .font(.custom("EBGaramond-Regular", size: 30))
+                                            Spacer()
+                                        }
+                                        Spacer()
+                                    }
+                                        .padding()
+                                    
+                                    
+                                )
+                        )
+                }
+                .padding(.top, 5)
             }
             
             Spacer()
@@ -137,6 +202,9 @@ struct MainView: View {
                 averageRating = rating
                 avgEnergyLevel = energy
                 avgSleepLevel = sleep
+                getTriggerContext(){ result in
+                    trigger = result
+                }
                 getAverageMood(){ result in
                     moodRange = result
                     isLoading = false
