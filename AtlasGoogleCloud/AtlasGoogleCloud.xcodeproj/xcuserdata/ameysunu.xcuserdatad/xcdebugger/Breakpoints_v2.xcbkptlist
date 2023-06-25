@@ -276,5 +276,69 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62C1D665-302B-437A-BC1B-7598A0EB368E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "getAverageMood(completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "746C150E-747D-452E-9FFE-CE1D7F643406"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "getAverageMood(completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "746C150E-747D-452E-9FFE-CE1D7F643406 - 6c64b07aa9b8041b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AtlasGoogleCloud.getAverageMood(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "746C150E-747D-452E-9FFE-CE1D7F643406 - 6c64b07aa9b8041b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AtlasGoogleCloud.getAverageMood(completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "652">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
