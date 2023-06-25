@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-func returnBoxColor(params: String) -> Color {
-    let doubleParams = Double(params)
-    if doubleParams!  > 7 {
+func returnBoxColor(params: Double) -> Color {
+    if params  > 7 {
         return Color.green
-    } else if doubleParams! >= 4 {
+    } else if params >= 4 {
         return Color.orange
     } else {
         return Color.red

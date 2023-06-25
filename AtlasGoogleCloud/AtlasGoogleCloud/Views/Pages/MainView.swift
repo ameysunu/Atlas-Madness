@@ -9,8 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State var avgEnergyLevel: String = "5.0"
-    @State var avgSleepLevel: String = "0.0"
+    @State var avgEnergyLevel: Double = 0.0
+    @State var avgSleepLevel: Double = 0.0
+    @State var averageRating: Double = 0.0
     
     var body: some View {
         VStack{
@@ -60,7 +61,7 @@ struct MainView: View {
                                         Text("Average Energy Level")
                                             .font(.custom("EBGaramond-Regular", size: 15))
                                             .padding(.top, 5)
-                                        Text("5.0")
+                                        Text("\(avgEnergyLevel, specifier: "%.1f")")
                                             .font(.custom("EBGaramond-Regular", size: 30))
                                         Spacer()
                                     }
@@ -87,7 +88,7 @@ struct MainView: View {
                                         Text("Average Sleep Level")
                                             .font(.custom("EBGaramond-Regular", size: 15))
                                             .padding(.top, 5)
-                                        Text("0.0")
+                                        Text("\(avgSleepLevel, specifier: "%.1f")")
                                             .font(.custom("EBGaramond-Regular", size: 30))
                                         Spacer()
                                     }
@@ -105,6 +106,10 @@ struct MainView: View {
         }
         .onAppear{
             getAverageEnergySleep(){ rating, energy, sleep in
+                averageRating = rating
+                avgEnergyLevel = energy
+                avgSleepLevel = sleep
+                
                 print("energy: \(energy)")
                 print("rating: \(rating)")
                 print("sleep: \(sleep)")
