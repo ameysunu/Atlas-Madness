@@ -103,6 +103,13 @@ struct MainView: View {
             
             Spacer()
         }
+        .onAppear{
+            getAverageEnergySleep(){ rating, energy, sleep in
+                print("energy: \(energy)")
+                print("rating: \(rating)")
+                print("sleep: \(sleep)")
+            }
+        }
     }
 }
 
