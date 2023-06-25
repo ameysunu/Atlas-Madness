@@ -286,8 +286,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "getAverageMood(completion:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -302,8 +302,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "getAverageMood(completion:)"
             landmarkType = "9">
             <Locations>
@@ -350,8 +350,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "getTriggerContext(completion:)"
             landmarkType = "9">
             <Locations>

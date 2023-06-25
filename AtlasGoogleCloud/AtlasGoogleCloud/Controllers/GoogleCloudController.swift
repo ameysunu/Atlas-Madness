@@ -28,21 +28,53 @@ func exportDataToCloudStorage(jsonData: [Mood]) {
         }
 
         let folderURL = documentDirectoryURL.appendingPathComponent(name)
+        let fileName = "\(name).json"
+        let fileURL = folderURL.appendingPathComponent(fileName)
 
         do {
             try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
-
-            let fileURL = folderURL.appendingPathComponent("\(getCurrentTimeStamp()).json")
 
             let newlineDelimitedJSON = jsonData.map { try! JSONEncoder().encode($0) }
                 .map { String(data: $0, encoding: .utf8)! }
                 .joined(separator: "\n")
 
-            try newlineDelimitedJSON.write(to: fileURL, atomically: true, encoding: .utf8)
+            if FileManager.default.fileExists(atPath: fileURL.path) {
+                // File already exists, so update its contents
+                do {
+                    let fileHandle = try FileHandle(forWritingTo: fileURL)
+                    fileHandle.seekToEndOfFile()
+
+                    // Clear the existing contents of the file
+                    fileHandle.truncateFile(atOffset: 0)
+
+                    if let newData = newlineDelimitedJSON.data(using: .utf8) {
+                        // Write the new data to the file
+                        fileHandle.write(newData)
+
+                        // Close the file handle
+                        fileHandle.closeFile()
+                    }
+
+                    print("Updated JSON file")
+                } catch {
+                    // Handle file write error
+                    print("Failed to update JSON file: \(error)")
+                }
+            } else {
+                // File doesn't exist, so create a new file
+                do {
+                    try newlineDelimitedJSON.write(to: fileURL, atomically: true, encoding: .utf8)
+
+                    print("Created JSON file")
+                } catch {
+                    // Handle file write error
+                    print("Failed to create JSON file: \(error)")
+                }
+            }
 
             let accessToken = Bundle.main.object(forInfoDictionaryKey: "OAUTH_KEY") as! String
             let bucketName = "ameyjson-data"
-            let objectName = "\(name)-\(getCurrentTimeStamp()).json"
+            let objectName = "\(name).json"
 
             let uploadURLString = "https://www.googleapis.com/upload/storage/v1/b/\(bucketName)/o?uploadType=media&name=\(objectName)"
 
@@ -66,13 +98,16 @@ func exportDataToCloudStorage(jsonData: [Mood]) {
                 }.resume()
             } catch {
                 // Handle file read error
+                print("Failed to read file data: \(error)")
             }
         } catch {
             // Handle file or directory creation error
+            print("Failed to create directory: \(error)")
         }
     } else {
         print("Name is nil")
     }
+
 }
 
 func getAverageEnergySleep(completion: @escaping (Double, Double, Double) -> Void) {
