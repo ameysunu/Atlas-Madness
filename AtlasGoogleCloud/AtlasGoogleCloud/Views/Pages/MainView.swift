@@ -182,6 +182,29 @@ struct MainView: View {
                         )
                 }
                 .padding(.top, 5)
+                Rectangle()
+                    .cornerRadius(5)
+                    .offset(x: 4, y: 4)
+                    .frame(height: 100)
+                    .overlay(
+                        Rectangle()
+                            .stroke(.black, lineWidth: 5)
+                            .background(.white)
+                            .cornerRadius(5)
+                            .overlay(
+                                HStack{
+                                    VStack(alignment: .leading){
+                                        Text("Support Groups")
+                                            .font(.custom("EBGaramond-Regular", size: 25))
+                                        Spacer()
+                                    }
+                                    Spacer()
+                                    Image(systemName: "arrow.forward")
+                                }
+                                    .padding()
+                            )
+                    )
+                    .padding(.top, 5)
             }
             
             Spacer()

@@ -10,16 +10,18 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         TabView {
-                   MainView()
-                        .tabItem {
-                            Label("Home", systemImage: "house.fill")
-                        }
-
-                    MoodView()
-                        .tabItem {
-                            Label("Mood", systemImage: "lasso.and.sparkles")
-                        }
+            ScrollView{
+                MainView()
+            }
+            .tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+            
+            MoodView()
+                .tabItem {
+                    Label("Mood", systemImage: "lasso.and.sparkles")
                 }
+        }
         .padding()
         .navigationBarBackButtonHidden()
     }
