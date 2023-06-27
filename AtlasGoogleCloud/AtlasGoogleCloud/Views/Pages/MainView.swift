@@ -16,6 +16,8 @@ struct MainView: View {
     @State var moodRange: String = ""
     @State var isLoading: Bool = true
     @State var isTimeout: Bool = false
+    @State var openSettings: Bool = false
+    @State var isLoggedIn = false
     
     let total: Double = 10
     
@@ -25,6 +27,11 @@ struct MainView: View {
                 Text("Home")
                     .font(.custom("EBGaramond-Regular", size: 30))
                 Spacer()
+                Button(action:{
+                    openSettings = true
+                }){
+                    Image(systemName: "gear")
+                }
             }
             if isLoading {
                 if isTimeout{
@@ -208,6 +215,9 @@ struct MainView: View {
             }
             
             Spacer()
+        }
+        .sheet(isPresented: $openSettings){
+            SettingsView()
         }
         .onAppear{
             isTimeout = false
