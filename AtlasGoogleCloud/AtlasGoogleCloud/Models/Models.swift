@@ -30,3 +30,23 @@ struct Mood: Identifiable, Codable, Hashable {
         case appetite, context, energyLevel, mood, notes, rating, sleepQuality, trigger, timestamp
     }
 }
+
+struct DialogflowResponse: Codable {
+    // Other properties
+    
+    let queryResult: QueryResult
+    
+    struct QueryResult: Codable {
+        // Other properties
+        
+        let fulfillmentMessages: [FulfillmentMessage]
+        
+        struct FulfillmentMessage: Codable {
+            let text: TextMessage
+            
+            struct TextMessage: Codable {
+                let text: [String]
+            }
+        }
+    }
+}

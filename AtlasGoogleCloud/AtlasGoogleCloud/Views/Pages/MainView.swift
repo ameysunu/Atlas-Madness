@@ -201,7 +201,9 @@ struct MainView: View {
                             .overlay(
                                 HStack{
                                     VStack(alignment: .leading){
-                                        Text("Support Groups")
+                                        Text("Personalized")
+                                            .font(.custom("EBGaramond-Regular", size: 25))
+                                        Text("Therapy Recommendation")
                                             .font(.custom("EBGaramond-Regular", size: 25))
                                         Spacer()
                                     }

@@ -303,3 +303,70 @@ func getTriggerContext(completion: @escaping (String) -> Void) {
     
     task.resume()
 }
+
+func sendQueryToDialogFlow(userText: String, completion: @escaping (String) -> Void){
+   // let apiKey = Bundle.main.object(forInfoDictionaryKey: "OAUTH_KEY") as! String
+    let apiKey = Bundle.main.object(forInfoDictionaryKey: "DIALOGFLOW_KEY") as! String
+    let projectID = "myagent-bvsq"
+    let sessionID = "9b2b5a5b-2778-75e6-ce3a-d05c2a420a09"
+    let url = URL(string: "https://dialogflow.googleapis.com/v2/projects/\(projectID)/agent/sessions/\(sessionID):detectIntent")!
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+    request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+    
+    let queryInput: [String: Any] = [
+        "text": [
+            "text": "\(userText)",
+            "languageCode": "en"
+        ]
+    ]
+    
+    let queryParams: [String: Any] = [
+        "source": "DIALOGFLOW_CONSOLE",
+        "timeZone": "Europe/Dublin",
+        "sentimentAnalysisRequestConfig": [
+            "analyzeQueryTextSentiment": true
+        ]
+    ]
+    
+    let payload: [String: Any] = [
+        "queryInput": queryInput,
+        "queryParams": queryParams
+    ]
+    
+    let jsonData = try? JSONSerialization.data(withJSONObject: payload)
+    request.httpBody = jsonData
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Error: \(error)")
+            return
+        }
+        
+        if let jsonString = String(data: data!, encoding: .utf8) {
+            print("Response: \(jsonString)")
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(DialogflowResponse.self, from: data!)
+                
+                let fulfillmentText = response.queryResult.fulfillmentMessages.first?.text.text.first
+                completion(fulfillmentText ?? "")
+                print("Fulfillment Text: \(fulfillmentText ?? "")")
+            } catch {
+                print("Error decoding JSON response: \(error)")
+                completion("Error decoding JSON response: \(error)")
+            }
+        }
+    }
+    
+    task.resume()
+}
+
+/*
+ 
+ curl -H "Content-Type: application/json; charset=utf-8"  -H "Authorization: Bearer ya29.a0AWY7CkkU21v9czpT767MTEilOW3HziiG-9tDAPizZFuNTlOHYnsIVGTf9yk_Nd4nxDUqC5EbIZRYxLpOUFpokb2UYTLwD6qPSFRlFT8-LQUUinNMv10R-XBrQ0moFv6dde4_VBojlKaoyCO3LqhAoaU5ih1TbP1HZ2Ub7ZMRfwF_R56KEGwg0BOk1HJp7O5K4lllioZTPI4xr7EFmxEfFSMBPt4AbMr1jzj8K1YnVqDHOvY2mUqwAP28sSQZJ1j1V-sMdBNRQ6iPAakdZQNLggPKXzUU0kmgBhHVBaCholPExaMWN6LhvKuvbFsyAvqCFMrI6sBN8G2LsQDsgPfgU2-zEXF_7aySK4sS2WlMGWfkee1u9iSpjIfnU6tf-oskzec5SeRixsvPgWwVmEToNs4WvcqBE681aCgYKAXoSARASFQG1tDrpEyzx0H8BSu-fFb3Pde0rYg0423"  -d "{\"queryInput\":{\"text\":{\"text\":\"mindful techniques\",\"languageCode\":\"en\"}},\"queryParams\":{\"source\":\"DIALOGFLOW_CONSOLE\",\"timeZone\":\"Europe/Dublin\",\"sentimentAnalysisRequestConfig\":{\"analyzeQueryTextSentiment\":true}}}" "https://dialogflow.googleapis.com/v2/projects/myagent-bvsq/agent/sessions/9b2b5a5b-2778-75e6-ce3a-d05c2a420a09:detectIntent"
+ */

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>DIALOGFLOW_KEY</key>
+	<string>$(DIALOGFLOW_KEY)</string>
 	<key>MONGO_API_KEY</key>
 	<string>$(MONGO_API_KEY)</string>
 	<key>OAUTH_KEY</key>

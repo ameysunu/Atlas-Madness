@@ -21,6 +21,11 @@ struct HomeView: View {
                 .tabItem {
                     Label("Mood", systemImage: "lasso.and.sparkles")
                 }
+            
+            ChatView()
+                .tabItem {
+                    Label("Chat", systemImage: "text.bubble")
+                }
         }
         .padding()
         .navigationBarBackButtonHidden()
