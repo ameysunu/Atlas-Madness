@@ -26,7 +26,9 @@ struct HomeView: View {
                 .tabItem {
                     Label("Chat", systemImage: "text.bubble")
                 }
-            SupportView()
+            NavigationView {
+                SupportView()
+            }
                 .tabItem {
                     Label("Support Groups", systemImage: "shared.with.you")
                 }

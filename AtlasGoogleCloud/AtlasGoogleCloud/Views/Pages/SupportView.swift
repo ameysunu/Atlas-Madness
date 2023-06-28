@@ -11,10 +11,12 @@ struct SupportView: View {
     
     @State var isFirst: Bool = true
     @State var openSheet: Bool = false
+    @State var navigateToNext: Bool = false
     
     var body: some View {
         VStack(alignment: .leading){
             if isFirst{
+                NavigationLink(destination: SupportScreen(), isActive: $navigateToNext){}
                 HStack{
                     Text("Support Groups")
                         .font(.custom("EBGaramond-Regular", size: 40))
@@ -54,7 +56,7 @@ struct SupportView: View {
                                     .foregroundColor(.white)
                             }
                                 .onTapGesture {
-                                    
+                                    navigateToNext = true
                                 }
                                 .padding()
                         )
@@ -118,6 +120,28 @@ struct SupportSheet: View {
                     .font(.custom("EBGaramond-Regular", size: 18))
                     .padding(.top, 10)
             }
+        }
+    }
+}
+
+struct SupportScreen: View {
+    
+    @State var name: String = ""
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            HStack{
+                Text("Hello \(name)")
+                    .font(.custom("EBGaramond-Regular", size: 30))
+                    .padding(.bottom, 10)
+                Spacer()
+            }
+            
+            Spacer()
+        }
+        .padding()
+        .onAppear{
+            name = getLoginToken() ?? ""
         }
     }
 }
