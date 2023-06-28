@@ -26,6 +26,10 @@ struct HomeView: View {
                 .tabItem {
                     Label("Chat", systemImage: "text.bubble")
                 }
+            SupportView()
+                .tabItem {
+                    Label("Support Groups", systemImage: "shared.with.you")
+                }
         }
         .padding()
         .navigationBarBackButtonHidden()
