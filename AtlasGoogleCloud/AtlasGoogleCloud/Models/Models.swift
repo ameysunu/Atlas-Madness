@@ -50,3 +50,10 @@ struct DialogflowResponse: Codable {
         }
     }
 }
+
+struct ChatMessage: Identifiable {
+    let id = UUID()
+    var text: String
+    let isUser: Bool
+    var isLoading: Bool
+}
