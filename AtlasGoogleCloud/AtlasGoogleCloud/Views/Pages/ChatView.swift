@@ -11,7 +11,7 @@ struct ChatView: View {
     
     @State private var messages: [ChatMessage] = []
     @State private var userInput = ""
-    @State var textLoading: Bool = false
+    @State private var isScrollEnabled = true
     
     func sendMessage() {
         let userMessage = ChatMessage(text: userInput, isUser: true, isLoading: false)
@@ -28,35 +28,52 @@ struct ChatView: View {
                 messages[index].text = response
                 messages[index].isLoading = false
             }
+            scrollToBottom()
         }
         
         userInput = ""
     }
+    
+    func scrollToBottom() {
+           DispatchQueue.main.async {
+               isScrollEnabled = false
+               withAnimation {
+                   isScrollEnabled = true
+               }
+           }
+       }
     
     
     var body: some View {
         VStack {
             Text("Chat")
                 .font(.custom("EBGaramond-Regular", size: 20))
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 16) {
-                    ForEach(messages) { message in
-                        ChatBubble(message: message)
+            ScrollViewReader { scrollView in
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 16) {
+                        ForEach(messages) { message in
+                            ChatBubble(message: message)
+                        }
                     }
                 }
-            }
-            .padding()
-            
-            HStack {
-                TextField("Type a message...", text: $userInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                Button(action: sendMessage) {
-                    Image(systemName: "paperplane.fill")
-                        .foregroundColor(.blue)
+                .padding()
+                .onChange(of: isScrollEnabled) { enabled in
+                    if enabled {
+                        scrollView.scrollTo(messages.last?.id, anchor: .bottom)
+                    }
                 }
+                
+                HStack {
+                    TextField("Type a message...", text: $userInput)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Button(action: sendMessage) {
+                        Image(systemName: "paperplane.fill")
+                            .foregroundColor(.blue)
+                    }
+                }
+                .padding()
             }
-            .padding()
         }
     }
 }
