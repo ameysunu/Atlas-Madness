@@ -18,7 +18,7 @@ extension Request {
 
 func routes(_ app: Application) throws {
     // A GET request will return a list of all items in the database.
-    app.get { req async throws -> [Groups] in
+    app.get("allgroups") { req async throws -> [Groups] in
         try await req.groupsCollection.find().toArray()
     }
 
