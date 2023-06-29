@@ -4,11 +4,29 @@ import Vapor
 struct Groups: Content {
     let _id: BSONObjectID?
     let name: String
-    let approved: String
     let description: String
-    let timestamp: String
-    let groupId: String
+    let facilitators: [Facilitator]
+    let members: [Member]
+    let meetingSchedule: MeetingSchedule
+    let rules: [String]
+    let createdAt: String
+    let updatedAt: String
 }
+
+struct Facilitator: Content {
+    let userid: String
+}
+
+struct Member: Content {
+    let userId: String
+    let name: String
+}
+
+struct MeetingSchedule: Content {
+    let day: String
+    let time: String
+}
+
 
 extension Request {
     var groupsCollection: MongoCollection<Groups> {
@@ -43,6 +61,25 @@ func routes(_ app: Application) throws {
 
 /*
  -- TEST: cURL --
- 
- curl -X POST -H "Content-Type: application/json" -d '{"name":"YourGroupName", "approved":"true", "description":"YourDescription", "timestamp":"YourTimestamp", "groupId":"YourGroupId"}' http://127.0.0.1:8080/
+ curl -X POST -H "Content-Type: application/json" -d '{
+   "name": "Anxiety Support Group",
+   "description": "A group for individuals struggling with anxiety",
+   "facilitators": [
+     { "userid": "John Doe" },
+     { "userid": "Jane Smith" }
+   ],
+   "members": [
+     { "userId": "609fb3b0285a1a12ab5c7851", "name": "user1" },
+     { "userId": "609fb3d8285a1a12ab5c7852", "name": "user2" }
+   ],
+   "meetingSchedule": { "day": "Wednesday", "time": "7:00 PM" },
+   "rules": [
+     "Respect each other'\''s privacy",
+     "Maintain a supportive and non-judgmental environment",
+     "Confidentiality is key"
+   ],
+   "createdAt": "2021-05-15T10:30:00Z",
+   "updatedAt": "2021-06-20T14:45:00Z"
+ }' http://127.0.0.1:8080/
+
  */
