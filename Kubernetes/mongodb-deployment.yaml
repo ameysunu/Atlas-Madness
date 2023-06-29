@@ -21,6 +21,11 @@ spec:
             requests:
               memory: "1Gi"
               cpu: "0.5"
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: your-root-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: your-root-password
           volumeMounts:
             - name: mongodb-data
               mountPath: /data/db
