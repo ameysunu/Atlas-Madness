@@ -128,6 +128,7 @@ struct SupportScreen: View {
     
     @State var name: String = ""
     @State private var groups: [Groups] = []
+    @State var isLoading: Bool = true
     
     
     var body: some View {
@@ -139,17 +140,36 @@ struct SupportScreen: View {
                 Spacer()
                 
             }
+            Text("Support groups available:")
+                .font(.custom("EBGaramond-Regular", size: 20))
+                .padding(.bottom, 10)
             
-            ForEach(groups, id: \.groupId) { group in
-                VStack(alignment: .leading) {
-                    Text(group.name)
-                        .font(.headline)
-                    
-                    Text(group.description)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    
-                    // Display other group information as needed
+            if isLoading{
+                ProgressView()
+                
+            } else {
+                ScrollView{
+                    ForEach(groups, id: \.groupId) { group in
+                        
+                        Rectangle()
+                            .cornerRadius(5)
+                            .offset(x: 4, y: 4)
+                            .frame(height: 100)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(.black, lineWidth: 5)
+                                    .background(.orange)
+                                    .cornerRadius(5)
+                                    .overlay(VStack(alignment: .leading) {
+                                        Text(group.name)
+                                            .font(.custom("EBGaramond-Regular", size: 20))
+                                        
+                                        Text(group.description)
+                                            .font(.custom("EBGaramond-Regular", size: 15))
+                                        
+                                    })
+                            )
+                    }
                 }
             }
             
@@ -164,6 +184,7 @@ struct SupportScreen: View {
                     print(data)
                     DispatchQueue.main.async {
                         self.groups = data
+                        isLoading = false
                     }
                 case .failure(let error):
                     print(error)
