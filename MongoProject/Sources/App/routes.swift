@@ -11,6 +11,7 @@ struct Groups: Content {
     let rules: [String]
     let createdAt: String
     let updatedAt: String
+    let groupId: String
 }
 
 struct Facilitator: Content {

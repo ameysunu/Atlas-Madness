@@ -366,7 +366,37 @@ func sendQueryToDialogFlow(userText: String, completion: @escaping (String) -> V
     task.resume()
 }
 
-/*
- 
- curl -H "Content-Type: application/json; charset=utf-8"  -H "Authorization: Bearer ya29.a0AWY7CkkU21v9czpT767MTEilOW3HziiG-9tDAPizZFuNTlOHYnsIVGTf9yk_Nd4nxDUqC5EbIZRYxLpOUFpokb2UYTLwD6qPSFRlFT8-LQUUinNMv10R-XBrQ0moFv6dde4_VBojlKaoyCO3LqhAoaU5ih1TbP1HZ2Ub7ZMRfwF_R56KEGwg0BOk1HJp7O5K4lllioZTPI4xr7EFmxEfFSMBPt4AbMr1jzj8K1YnVqDHOvY2mUqwAP28sSQZJ1j1V-sMdBNRQ6iPAakdZQNLggPKXzUU0kmgBhHVBaCholPExaMWN6LhvKuvbFsyAvqCFMrI6sBN8G2LsQDsgPfgU2-zEXF_7aySK4sS2WlMGWfkee1u9iSpjIfnU6tf-oskzec5SeRixsvPgWwVmEToNs4WvcqBE681aCgYKAXoSARASFQG1tDrpEyzx0H8BSu-fFb3Pde0rYg0423"  -d "{\"queryInput\":{\"text\":{\"text\":\"mindful techniques\",\"languageCode\":\"en\"}},\"queryParams\":{\"source\":\"DIALOGFLOW_CONSOLE\",\"timeZone\":\"Europe/Dublin\",\"sentimentAnalysisRequestConfig\":{\"analyzeQueryTextSentiment\":true}}}" "https://dialogflow.googleapis.com/v2/projects/myagent-bvsq/agent/sessions/9b2b5a5b-2778-75e6-ce3a-d05c2a420a09:detectIntent"
- */
+func fetchSupportGroups(urlString: String, completion: @escaping (Result<[Groups], Error>) -> Void) {
+    guard let url = URL(string: urlString) else {
+        completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+        return
+    }
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: url) { (data, response, error) in
+        if let error = error {
+            completion(.failure(error))
+            return
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+            return
+        }
+        
+        guard let data = data else {
+            completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let jsonData = try decoder.decode([Groups].self, from: data)
+            completion(.success(jsonData))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    task.resume()
+}

@@ -57,3 +57,30 @@ struct ChatMessage: Identifiable {
     let isUser: Bool
     var isLoading: Bool
 }
+
+struct Groups: Codable {
+    let name: String
+    let description: String
+    let facilitators: [Facilitator]
+    let members: [Member]
+    let meetingSchedule: MeetingSchedule
+    let rules: [String]
+    let createdAt: String
+    let updatedAt: String
+    let groupId: String
+}
+
+
+struct Facilitator: Codable {
+    let userid: String
+}
+
+struct Member: Codable {
+    let userId: String
+    let name: String
+}
+
+struct MeetingSchedule: Codable {
+    let day: String
+    let time: String
+}

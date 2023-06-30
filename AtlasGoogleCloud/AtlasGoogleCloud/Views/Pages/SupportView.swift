@@ -127,6 +127,8 @@ struct SupportSheet: View {
 struct SupportScreen: View {
     
     @State var name: String = ""
+    @State private var groups: [Groups] = []
+    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -135,6 +137,20 @@ struct SupportScreen: View {
                     .font(.custom("EBGaramond-Regular", size: 30))
                     .padding(.bottom, 10)
                 Spacer()
+                
+            }
+            
+            ForEach(groups, id: \.groupId) { group in
+                VStack(alignment: .leading) {
+                    Text(group.name)
+                        .font(.headline)
+                    
+                    Text(group.description)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    
+                    // Display other group information as needed
+                }
             }
             
             Spacer()
@@ -142,6 +158,17 @@ struct SupportScreen: View {
         .padding()
         .onAppear{
             name = getLoginToken() ?? ""
+            fetchSupportGroups(urlString: "https://swift-serverless-ct7aebfmda-nw.a.run.app/allgroups") { result in
+                switch result {
+                case .success(let data):
+                    print(data)
+                    DispatchQueue.main.async {
+                        self.groups = data
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
 }
