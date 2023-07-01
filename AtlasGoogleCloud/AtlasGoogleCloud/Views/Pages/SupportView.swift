@@ -168,9 +168,11 @@ struct SupportScreen: View {
                                         VStack(alignment: .leading) {
                                         Text(group.name)
                                             .font(.custom("EBGaramond-Regular", size: 20))
+                                            .foregroundColor(.black)
                                         
                                         Text(group.description)
                                             .font(.custom("EBGaramond-Regular", size: 15))
+                                            .foregroundColor(.black)
                                         
                                         }
                                         .onTapGesture {
