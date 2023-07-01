@@ -129,6 +129,8 @@ struct SupportScreen: View {
     @State var name: String = ""
     @State private var groups: [Groups] = []
     @State var isLoading: Bool = true
+    @State var navigateToNext: Bool = false
+    @State private var selectedGroup: Groups?
     
     
     var body: some View {
@@ -151,6 +153,7 @@ struct SupportScreen: View {
                 ScrollView{
                     ForEach(groups, id: \.groupId) { group in
                         
+                        
                         Rectangle()
                             .cornerRadius(5)
                             .offset(x: 4, y: 4)
@@ -160,14 +163,22 @@ struct SupportScreen: View {
                                     .stroke(.black, lineWidth: 5)
                                     .background(.orange)
                                     .cornerRadius(5)
-                                    .overlay(VStack(alignment: .leading) {
+                                    .overlay(
+                                        NavigationLink(destination: SupportGroup(group: selectedGroup), isActive: $navigateToNext){
+                                        VStack(alignment: .leading) {
                                         Text(group.name)
                                             .font(.custom("EBGaramond-Regular", size: 20))
                                         
                                         Text(group.description)
                                             .font(.custom("EBGaramond-Regular", size: 15))
                                         
-                                    })
+                                        }
+                                        .onTapGesture {
+                                            navigateToNext = true
+                                            selectedGroup = group
+                                        }
+                                            
+                                        })
                             )
                     }
                 }
@@ -191,5 +202,6 @@ struct SupportScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }

@@ -29,6 +29,7 @@
 		777F02402A45BB7B0056A392 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F023F2A45BB7B0056A392 /* HomeView.swift */; };
 		777F02442A45D87F0056A392 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F02432A45D87F0056A392 /* MainView.swift */; };
 		777F02472A45DD070056A392 /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F02462A45DD070056A392 /* MoodView.swift */; };
+		77E509B72A508C4500D4232C /* SupportGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E509B62A508C4500D4232C /* SupportGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		777F023F2A45BB7B0056A392 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		777F02432A45D87F0056A392 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		777F02462A45DD070056A392 /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		77E509B62A508C4500D4232C /* SupportGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				77566C212A4AE07500AE3A04 /* SettingsView.swift */,
 				77566C232A4B176000AE3A04 /* ChatView.swift */,
 				777907D12A4C423A004BCCC7 /* SupportView.swift */,
+				77E509B62A508C4500D4232C /* SupportGroup.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				770F89832A449ED4006C6509 /* MongoController.swift in Sources */,
+				77E509B72A508C4500D4232C /* SupportGroup.swift in Sources */,
 				777F02442A45D87F0056A392 /* MainView.swift in Sources */,
 				770475382A482FE9003ACFD9 /* GoogleCloudController.swift in Sources */,
 				7712E9BA2A438A51006B5142 /* ContentView.swift in Sources */,
