@@ -11,7 +11,7 @@ struct Groups: Content {
     let rules: [String]
     let createdAt: String
     let updatedAt: String
-    let groupId: String
+    var groupId: String
 }
 
 struct Facilitator: Content {
@@ -55,6 +55,43 @@ func routes(_ app: Application) throws {
         let newGroup = try decoder.decode(Groups.self, from: data)
         
         try await req.groupsCollection.insertOne(newGroup).get()
+        
+        return Response(status: .created)
+    }
+    
+    app.post("addMember", ":groupId", ":userid") { req async throws -> Response in
+        guard let groupId = req.parameters.get("groupId"),
+              let userid = req.parameters.get("userid") else {
+            throw Abort(.badRequest, reason: "Missing groupId or userid parameter")
+        }
+        
+        guard let contentType = req.headers.contentType, contentType == .json else {
+            throw Abort(.unsupportedMediaType)
+        }
+        
+        guard let data = req.body.data else {
+            throw Abort(.badRequest, reason: "Empty request body")
+        }
+        
+        let decoder = JSONDecoder()
+        let newMember = try decoder.decode(Member.self, from: data)
+        
+        let memberDocument: BSONDocument = [
+            "userId": .string(newMember.userId),
+            "name": .string(newMember.name)
+        ]
+        
+        let filter: BSONDocument = [
+            "groupId": .string(groupId)
+        ]
+        
+        let update: BSONDocument = [
+            "$addToSet": .document([
+                "members": .document(memberDocument)
+            ])
+        ]
+        
+        try await req.groupsCollection.updateOne(filter: filter, update: update).get()
         
         return Response(status: .created)
     }
