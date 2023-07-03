@@ -101,6 +101,11 @@ struct SupportGroup: View {
                                     .foregroundColor(.white)
                             )
                     )
+                    .onTapGesture {
+                        addMemberToGroup(userId: getAuthToken()!, groupId: group!.groupId, name: getLoginToken()!){ result in
+                            print(result)
+                        }
+                    }
                 
                 HStack {
                     Rectangle()

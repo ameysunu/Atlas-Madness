@@ -191,7 +191,7 @@ struct SupportScreen: View {
         .padding()
         .onAppear{
             name = getLoginToken() ?? ""
-            fetchSupportGroups(urlString: "https://swift-serverless-ct7aebfmda-nw.a.run.app/allgroups") { result in
+            fetchSupportGroups(urlString: "http://localhost:8080/allgroups") { result in // testing on localhost before pushing final changes to GCP Serverless Cloud Run
                 switch result {
                 case .success(let data):
                     print(data)

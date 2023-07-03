@@ -400,3 +400,45 @@ func fetchSupportGroups(urlString: String, completion: @escaping (Result<[Groups
     
     task.resume()
 }
+
+func addMemberToGroup(userId: String, groupId: String, name: String, completion: @escaping (String) -> Void) {
+    
+    guard let url = URL(string: "http://localhost:8080/addMember/\(groupId)/\(userId)") else { //testing on localhost before moving to Cloud Run
+        print("Invalid URL")
+        return
+    }
+    
+    
+    let requestBody: [String: Any] = [
+        "userId": "\(userId)",
+        "name": "\(name)"
+    ]
+    
+    
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+        print("Failed to serialize JSON")
+        return
+    }
+    
+    
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = jsonData
+    
+    
+    URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Request error: \(error.localizedDescription)")
+            completion(error.localizedDescription)
+            return
+        }
+        
+        // Handle the response
+        if let httpResponse = response as? HTTPURLResponse {
+            completion("\(httpResponse.statusCode)")
+            print("Response status code: \(httpResponse.statusCode)")
+            // Additional handling of the response if needed
+        }
+    }.resume()
+}
