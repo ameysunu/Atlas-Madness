@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SupportGroup: View {
     let group: Groups?
+    @State var isJoined: Bool = false
+    
     var body: some View {
         VStack{
             ScrollView{
@@ -85,27 +87,44 @@ struct SupportGroup: View {
                         )
                     
                 }
-                
-                Rectangle()
-                    .cornerRadius(5)
-                    .offset(x: 4, y: 4)
-                    .frame(height: 50)
-                    .overlay(
-                        Rectangle()
-                            .stroke(.black, lineWidth: 5)
-                            .background(.blue)
-                            .cornerRadius(5)
-                            .overlay(
-                                Text("Join now")
-                                    .font(.custom("EBGaramond-Regular", size: 20))
-                                    .foregroundColor(.white)
-                            )
-                    )
-                    .onTapGesture {
-                        addMemberToGroup(userId: getAuthToken()!, groupId: group!.groupId, name: getLoginToken()!){ result in
-                            print(result)
+                if isJoined {
+                    Rectangle()
+                        .cornerRadius(5)
+                        .offset(x: 4, y: 4)
+                        .frame(height: 50)
+                        .overlay(
+                            Rectangle()
+                                .stroke(.black, lineWidth: 5)
+                                .background(.blue)
+                                .cornerRadius(5)
+                                .overlay(
+                                    Text("You are already a member")
+                                        .font(.custom("EBGaramond-Regular", size: 20))
+                                        .foregroundColor(.white)
+                                )
+                        )
+                } else {
+                    Rectangle()
+                        .cornerRadius(5)
+                        .offset(x: 4, y: 4)
+                        .frame(height: 50)
+                        .overlay(
+                            Rectangle()
+                                .stroke(.black, lineWidth: 5)
+                                .background(.blue)
+                                .cornerRadius(5)
+                                .overlay(
+                                    Text("Join now")
+                                        .font(.custom("EBGaramond-Regular", size: 20))
+                                        .foregroundColor(.white)
+                                )
+                        )
+                        .onTapGesture {
+                            addMemberToGroup(userId: getAuthToken()!, groupId: group!.groupId, name: getLoginToken()!){ result in
+                                print(result)
+                            }
                         }
-                    }
+                }
                 
                 HStack {
                     Rectangle()
@@ -143,6 +162,14 @@ struct SupportGroup: View {
                 }
                 
                 Spacer()
+            }
+        }
+        .onAppear{
+            checkIfMemberInGroup(userId: getAuthToken()!, groupId: group!.groupId) { result in
+                print(result)
+                if result == "Member exists in the group"{
+                    isJoined = true
+                }
             }
         }
     }
