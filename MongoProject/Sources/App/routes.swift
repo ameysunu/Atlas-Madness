@@ -95,6 +95,32 @@ func routes(_ app: Application) throws {
         
         return Response(status: .created)
     }
+    
+    // Check if member exists in a group
+    
+    app.get("checkMember", ":userid", ":groupId") { req -> EventLoopFuture<Response> in
+        guard let userid = req.parameters.get("userid"),
+              let groupId = req.parameters.get("groupId") else {
+            throw Abort(.badRequest, reason: "Missing userid or groupId parameter")
+        }
+
+        let filter: BSONDocument = [
+            "members.userId": .string(userid),
+            "groupId": .string(groupId)
+        ]
+
+        return req.groupsCollection.find(filter).flatMap { cursor in
+            cursor.toArray()
+        }.flatMapThrowing { groups in
+            if let _ = groups.first {
+                return Response(status: .ok, body: "Member exists in the group")
+            } else {
+                return Response(status: .notFound, body: "Member does not exist in the group")
+            }
+        }
+    }
+
+
 }
 
 /*
