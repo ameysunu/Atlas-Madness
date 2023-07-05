@@ -123,42 +123,45 @@ struct SupportGroup: View {
                             addMemberToGroup(userId: getAuthToken()!, groupId: group!.groupId, name: getLoginToken()!){ result in
                                 print(result)
                             }
+                            isJoined = true
                         }
                 }
-                
-                HStack {
-                    Rectangle()
-                        .cornerRadius(5)
-                        .offset(x: 4, y: 4)
-                        .frame(height: 50)
-                        .overlay(
-                            Rectangle()
-                                .stroke(.black, lineWidth: 5)
-                                .background(.purple)
-                                .cornerRadius(5)
-                                .overlay(
-                                    Text("Activities")
-                                        .font(.custom("EBGaramond-Regular", size: 20))
-                                        .foregroundColor(.white)
-                                )
-                        )
+                if isJoined {
                     
-                    Rectangle()
-                        .cornerRadius(5)
-                        .offset(x: 4, y: 4)
-                        .frame(height: 50)
-                        .overlay(
-                            Rectangle()
-                                .stroke(.black, lineWidth: 5)
-                                .background(.green)
-                                .cornerRadius(5)
-                                .overlay(
-                                    Text("Chats")
-                                        .font(.custom("EBGaramond-Regular", size: 20))
-                                        .padding(.leading, 10)
-                                        .foregroundColor(.white)
-                                )
-                        )
+                    HStack {
+                        Rectangle()
+                            .cornerRadius(5)
+                            .offset(x: 4, y: 4)
+                            .frame(height: 50)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(.black, lineWidth: 5)
+                                    .background(.purple)
+                                    .cornerRadius(5)
+                                    .overlay(
+                                        Text("Activities")
+                                            .font(.custom("EBGaramond-Regular", size: 20))
+                                            .foregroundColor(.white)
+                                    )
+                            )
+                        
+                        Rectangle()
+                            .cornerRadius(5)
+                            .offset(x: 4, y: 4)
+                            .frame(height: 50)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(.black, lineWidth: 5)
+                                    .background(.green)
+                                    .cornerRadius(5)
+                                    .overlay(
+                                        Text("Chats")
+                                            .font(.custom("EBGaramond-Regular", size: 20))
+                                            .padding(.leading, 10)
+                                            .foregroundColor(.white)
+                                    )
+                            )
+                    }
                 }
                 
                 Spacer()
