@@ -28,10 +28,37 @@ struct MeetingSchedule: Content {
     let time: String
 }
 
+struct GroupChat: Codable {
+    let _id: BSONObjectID?
+    let groupId: String
+    let name: String
+    let participants: [Participant]
+    let messages: [Message]
+    let createdAt: String
+    let updatedAt: String
+}
+
+struct Participant: Codable {
+    let userId: String
+    let username: String
+}
+
+struct Message: Codable {
+    let messageId: String
+    let sender: Participant
+    let content: String
+    let timestamp: String
+}
+
+
 
 extension Request {
     var groupsCollection: MongoCollection<Groups> {
         self.application.mongoDB.client.db("support-groups").collection("group", withType: Groups.self)
+    }
+    
+    var groupChats: MongoCollection<GroupChat> {
+        self.application.mongoDB.client.db("support-groups").collection("chats", withType: GroupChat.self)
     }
 }
 
@@ -116,6 +143,30 @@ func routes(_ app: Application) throws {
                 return Response(status: .ok, body: "Member exists in the group")
             } else {
                 return Response(status: .notFound, body: "Member does not exist in the group")
+            }
+        }
+    }
+    
+    app.get("groupChats", ":groupId") { req -> EventLoopFuture<Response> in
+        guard let groupId = req.parameters.get("groupId") else {
+            throw Abort(.badRequest, reason: "GroupId is missing in the request")
+        }
+        
+        let filter: BSONDocument = [
+            "groupId": .string(groupId)
+        ]
+        
+        return req.groupChats.find(filter).flatMap { cursor in
+            cursor.toArray()
+        }.flatMapThrowing { groups in
+            if let groupChat = groups.first {
+                let encoder = JSONEncoder()
+                let data = try encoder.encode(groupChat)
+                let response = Response(status: .ok, body: Response.Body(data: data))
+                response.headers.contentType = .json
+                return response
+            } else {
+                return Response(status: .notFound, body: "Group chat not found")
             }
         }
     }
