@@ -10,6 +10,7 @@ import SwiftUI
 struct SupportGroup: View {
     let group: Groups?
     @State var isJoined: Bool = false
+    @State var chatOpen: Bool = false
     
     var body: some View {
         VStack{
@@ -161,6 +162,9 @@ struct SupportGroup: View {
                                             .foregroundColor(.white)
                                     )
                             )
+                            .onTapGesture {
+                                chatOpen = true
+                            }
                     }
                 }
                 
@@ -174,6 +178,9 @@ struct SupportGroup: View {
                     isJoined = true
                 }
             }
+        }
+        .sheet(isPresented: $chatOpen) {
+            GroupChatView(groupId: group!.groupId)
         }
     }
 }

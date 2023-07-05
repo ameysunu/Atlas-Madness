@@ -468,3 +468,29 @@ func checkIfMemberInGroup(userId: String, groupId: String, completion: @escaping
         
         task.resume()
 }
+
+func getCurrentGroupChats(groupId: String, completion: @escaping (String) -> Void) {
+    
+    let urlString = "http://localhost:8080/groupChats/\(groupId)"
+        guard let url = URL(string: urlString) else {
+            completion("Invalid URL")
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion("\(error)")
+                return
+            }
+            
+            guard let data = data else {
+                completion("Empty Response Data")
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8) ?? ""
+            completion(responseString)
+        }
+        
+        task.resume()
+}
