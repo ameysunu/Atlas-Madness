@@ -51,11 +51,12 @@ struct DialogflowResponse: Codable {
     }
 }
 
-struct ChatMessage: Identifiable {
+struct ChatMessage: Identifiable, Codable {
     let id = UUID()
     var text: String
     let isUser: Bool
     var isLoading: Bool
+    var userId: String?
 }
 
 struct Groups: Codable {
@@ -83,4 +84,26 @@ struct Member: Codable {
 struct MeetingSchedule: Codable {
     let day: String
     let time: String
+}
+
+
+struct GroupChat: Codable {
+    let groupId: String
+    let name: String
+    let participants: [Participant]
+    let messages: [Message]
+    let createdAt: String
+    let updatedAt: String
+}
+
+struct Participant: Codable {
+    let userId: String
+    let username: String
+}
+
+struct Message: Codable {
+    let messageId: String
+    let sender: Participant
+    let content: String
+    let timestamp: String
 }

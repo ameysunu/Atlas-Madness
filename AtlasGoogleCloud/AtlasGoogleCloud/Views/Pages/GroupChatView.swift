@@ -12,6 +12,7 @@ struct GroupChatView: View {
     @State var groupId: String
     @State private var messages: [ChatMessage] = []
     @State private var userInput = ""
+    @State private var userId = getLoginToken()
     
     var body: some View {
         VStack {
@@ -21,7 +22,11 @@ struct GroupChatView: View {
                 ScrollView {
                     LazyVStack(alignment: .leading, spacing: 16) {
                         ForEach(messages) { message in
-                            ChatBubble(message: message)
+                            HStack{
+                                Text("\(message.userId!): ")
+                                    .font(.custom("EBGaramond-Regular", size: 20))
+                                ChatBubble(message: message)
+                            }
                         }
                     }
                 }
@@ -43,8 +48,28 @@ struct GroupChatView: View {
         }
         .onAppear{
             getCurrentGroupChats(groupId: groupId) { result in
-                print(result)
+                guard let data = result.data(using: .utf8) else {
+                    return
+                }
+                
+                do {
+                    let decodedData = try JSONDecoder().decode(GroupChat.self, from: data)
+                    let messageData = decodedData.messages
+                    
+                    messages = messageData.map { message in
+                        let text = message.content
+                        let isUser = message.sender.userId == userId
+                        let userId = message.sender.username
+                        
+                        return ChatMessage(text: text, isUser: isUser, isLoading: false, userId: userId)
+                        
+                        
+                    }
+                } catch {
+                    print("Error decoding chat messages: \(error)")
+                }
             }
+            
         }
     }
 }
