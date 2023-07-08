@@ -50,6 +50,19 @@ struct Message: Codable {
     let timestamp: String
 }
 
+struct Activity: Codable {
+    let userId: String
+    let name: String
+    let description: String
+    let timestamp: String
+}
+
+struct ActivityData: Codable {
+    let _id: BSONObjectID?
+    let activity: [Activity]
+    let createdAt: String
+    let groupId: String
+}
 
 
 extension Request {
@@ -59,6 +72,10 @@ extension Request {
     
     var groupChats: MongoCollection<GroupChat> {
         self.application.mongoDB.client.db("support-groups").collection("chats", withType: GroupChat.self)
+    }
+    
+    var activitiesCollection: MongoCollection<ActivityData> {
+        self.application.mongoDB.client.db("support-groups").collection("activities", withType: ActivityData.self)
     }
 }
 
@@ -216,8 +233,30 @@ func routes(_ app: Application) throws {
 
         return Response(status: .created)
     }
-
-
+    
+    app.get("activities", ":groupId") { req -> EventLoopFuture<Response> in
+        guard let groupId = req.parameters.get("groupId") else {
+            throw Abort(.badRequest, reason: "GroupId is missing in the request")
+        }
+        
+        let filter: BSONDocument = [
+            "groupId": .string(groupId)
+        ]
+        
+        return req.activitiesCollection.find(filter).flatMap { cursor in
+            cursor.toArray()
+        }.flatMapThrowing { activities in
+            if let activity = activities.first {
+                let encoder = JSONEncoder()
+                let data = try encoder.encode(activity)
+                let response = Response(status: .ok, body: Response.Body(data: data))
+                response.headers.contentType = .json
+                return response
+            } else {
+                return Response(status: .notFound, body: "Activity was not found")
+            }
+        }
+    }
 }
 
 /*
