@@ -24,6 +24,7 @@
 		773B26422A44F8910065D197 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773B26412A44F8910065D197 /* DetailView.swift */; };
 		77566C222A4AE07500AE3A04 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77566C212A4AE07500AE3A04 /* SettingsView.swift */; };
 		77566C242A4B176000AE3A04 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77566C232A4B176000AE3A04 /* ChatView.swift */; };
+		776D0C5B2A59E00B00B2E1A4 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776D0C5A2A59E00B00B2E1A4 /* ActivityView.swift */; };
 		777907D22A4C423A004BCCC7 /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777907D12A4C423A004BCCC7 /* SupportView.swift */; };
 		777F023E2A459A2C0056A392 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 777F023D2A459A2C0056A392 /* KeychainAccess */; };
 		777F02402A45BB7B0056A392 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F023F2A45BB7B0056A392 /* HomeView.swift */; };
@@ -53,6 +54,7 @@
 		773B26412A44F8910065D197 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		77566C212A4AE07500AE3A04 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		77566C232A4B176000AE3A04 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		776D0C5A2A59E00B00B2E1A4 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		777907D12A4C423A004BCCC7 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		777F023F2A45BB7B0056A392 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		777F02432A45D87F0056A392 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				777907D12A4C423A004BCCC7 /* SupportView.swift */,
 				77E509B62A508C4500D4232C /* SupportGroup.swift */,
 				77F84C782A55EB5F0021D985 /* GroupChatView.swift */,
+				776D0C5A2A59E00B00B2E1A4 /* ActivityView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				77566C242A4B176000AE3A04 /* ChatView.swift in Sources */,
 				77566C222A4AE07500AE3A04 /* SettingsView.swift in Sources */,
 				773B263E2A44E80C0065D197 /* Models.swift in Sources */,
+				776D0C5B2A59E00B00B2E1A4 /* ActivityView.swift in Sources */,
 				777F02402A45BB7B0056A392 /* HomeView.swift in Sources */,
 				7712E9B82A438A51006B5142 /* AtlasGoogleCloudApp.swift in Sources */,
 				7712E9D72A4394AB006B5142 /* Authentication.swift in Sources */,

@@ -11,6 +11,7 @@ struct SupportGroup: View {
     let group: Groups?
     @State var isJoined: Bool = false
     @State var chatOpen: Bool = false
+    @State var activityOpen: Bool = false
     
     var body: some View {
         VStack{
@@ -145,6 +146,9 @@ struct SupportGroup: View {
                                             .foregroundColor(.white)
                                     )
                             )
+                            .onTapGesture {
+                                activityOpen = true
+                            }
                         
                         Rectangle()
                             .cornerRadius(5)
@@ -181,6 +185,9 @@ struct SupportGroup: View {
         }
         .sheet(isPresented: $chatOpen) {
             GroupChatView(groupId: group!.groupId)
+        }
+        .sheet(isPresented: $activityOpen) {
+            ActivityView()
         }
     }
 }
