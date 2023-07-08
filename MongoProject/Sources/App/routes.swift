@@ -170,6 +170,52 @@ func routes(_ app: Application) throws {
             }
         }
     }
+    
+    app.post("sendMessage", ":groupId", ":userid", ":username", ":text") { req async throws -> Response in
+        guard let groupId = req.parameters.get("groupId"),
+              let username = req.parameters.get("username"),
+              let messageText = req.parameters.get("text"),
+              let userid = req.parameters.get("userid") else {
+            throw Abort(.badRequest, reason: "Missing groupId or userid parameter")
+        }
+
+        guard let contentType = req.headers.contentType, contentType == .json else {
+            throw Abort(.unsupportedMediaType)
+        }
+
+        guard let data = req.body.data else {
+            throw Abort(.badRequest, reason: "Empty request body")
+        }
+
+        let decoder = JSONDecoder()
+        let newMessage = try decoder.decode(Message.self, from: data)
+
+        let sender: BSONDocument = [
+            "userId": .string(userid),
+            "username": .string(username)
+        ]
+
+        let message: BSONDocument = [
+            "messageId": .string(UUID().uuidString),
+            "content": .string(messageText),
+            "sender": .document(sender),
+            "timestamp": .string(Date().ISO8601Format())
+        ]
+
+        let filter: BSONDocument = [
+            "groupId": .string(groupId)
+        ]
+
+        let update: BSONDocument = [
+            "$addToSet": .document([
+                "messages": .document(message)
+            ])
+        ]
+
+        try await req.groupChats.updateOne(filter: filter, update: update).get()
+
+        return Response(status: .created)
+    }
 
 
 }
