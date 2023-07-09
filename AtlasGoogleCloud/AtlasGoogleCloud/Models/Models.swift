@@ -116,6 +116,7 @@ struct Activity: Codable {
 }
 
 struct ActivityData: Codable {
+    let _id: String
     let activity: [Activity]
     let createdAt: String
     let groupId: String
