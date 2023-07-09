@@ -257,6 +257,26 @@ func routes(_ app: Application) throws {
             }
         }
     }
+    
+    
+    app.post("addActivity") { req async throws -> Response in
+        guard let contentType = req.headers.contentType, contentType == .json else {
+            throw Abort(.unsupportedMediaType)
+        }
+        
+        guard let data = req.body.data else {
+            throw Abort(.badRequest, reason: "Empty request body")
+        }
+        
+        let decoder = JSONDecoder()
+        let newActivity = try decoder.decode(ActivityData.self, from: data)
+        
+        try await req.activitiesCollection.insertOne(newActivity).get()
+        
+        return Response(status: .created)
+    }
+
+
 
 }
 
