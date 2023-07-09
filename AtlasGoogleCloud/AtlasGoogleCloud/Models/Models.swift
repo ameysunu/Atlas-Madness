@@ -107,3 +107,16 @@ struct Message: Codable {
     let content: String
     let timestamp: String
 }
+
+struct Activity: Codable {
+    let userId: String
+    let name: String
+    let description: String
+    let timestamp: String
+}
+
+struct ActivityData: Codable {
+    let activity: [Activity]
+    let createdAt: String
+    let groupId: String
+}

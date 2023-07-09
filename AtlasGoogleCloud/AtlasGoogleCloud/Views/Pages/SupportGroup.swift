@@ -187,7 +187,7 @@ struct SupportGroup: View {
             GroupChatView(groupId: group!.groupId)
         }
         .sheet(isPresented: $activityOpen) {
-            ActivityView()
+            ActivityView(groupId: group!.groupId)
         }
     }
 }

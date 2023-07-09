@@ -484,5 +484,85 @@
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F197B6B-A3AB-4DBA-B14D-5973D3A7ECDC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
+            landmarkName = "getGroupActivities(urlString:completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72EDF4B9-A985-4800-B5B5-3D21F54D54C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
+            landmarkName = "getGroupActivities(urlString:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "72EDF4B9-A985-4800-B5B5-3D21F54D54C9 - 6e9f208d726353d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AtlasGoogleCloud.getGroupActivities(urlString: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;AtlasGoogleCloud.ActivityData&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "540"
+                  endingLineNumber = "540"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  uuid = "72EDF4B9-A985-4800-B5B5-3D21F54D54C9 - 6e9f208d726353d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AtlasGoogleCloud.getGroupActivities(urlString: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;AtlasGoogleCloud.ActivityData&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "540"
+                  endingLineNumber = "540"
+                  offsetFromSymbolStart = "296">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AF2E719-6AAA-48E7-8338-F56D989528FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
+            landmarkName = "getGroupActivities(urlString:completion:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

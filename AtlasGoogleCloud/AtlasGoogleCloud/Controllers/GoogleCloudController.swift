@@ -535,3 +535,38 @@ func sendMessageToGroup(groupId: String, userId: String, username: String, messa
         }
     }.resume()
 }
+
+func getGroupActivities(urlString: String, completion: @escaping (Result<[ActivityData], Error>) -> Void) {
+    guard let url = URL(string: urlString) else {
+        completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+        return
+    }
+    
+    let session = URLSession.shared
+    let task = session.dataTask(with: url) { (data, response, error) in
+        if let error = error {
+            completion(.failure(error))
+            return
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+            completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+            return
+        }
+        
+        guard let data = data else {
+            completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let jsonData = try decoder.decode([ActivityData].self, from: data)
+            completion(.success(jsonData))
+        } catch {
+            completion(.failure(error))
+        }
+    }
+    
+    task.resume()
+}
