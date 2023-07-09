@@ -407,86 +407,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1B38C23B-9F8D-41C9-AAD2-2F322A06DCDA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
-            landmarkName = "sendMessageToGroup(groupId:userId:username:messageText:completion:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "12817370-AA79-4ABB-AFD3-F8F01FF3B178"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "499"
-            endingLineNumber = "499"
-            landmarkName = "sendMessageToGroup(groupId:userId:username:messageText:completion:)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "12817370-AA79-4ABB-AFD3-F8F01FF3B178 - aa9c3fa2991981c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AtlasGoogleCloud.sendMessageToGroup(groupId: Swift.String, userId: Swift.String, username: Swift.String, messageText: Swift.String, completion: (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "AtlasGoogleCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "499"
-                  endingLineNumber = "499"
-                  offsetFromSymbolStart = "732">
-               </Location>
-               <Location
-                  uuid = "12817370-AA79-4ABB-AFD3-F8F01FF3B178 - aa9c3fa2991981c4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AtlasGoogleCloud.sendMessageToGroup(groupId: Swift.String, userId: Swift.String, username: Swift.String, messageText: Swift.String, completion: (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "AtlasGoogleCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "499"
-                  endingLineNumber = "499"
-                  offsetFromSymbolStart = "1248">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DF4A6364-75BF-4653-8F19-834766763B98"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "525"
-            endingLineNumber = "525"
-            landmarkName = "sendMessageToGroup(groupId:userId:username:messageText:completion:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1F197B6B-A3AB-4DBA-B14D-5973D3A7ECDC"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -494,8 +414,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "getGroupActivities(urlString:completion:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -510,8 +430,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "540"
-            endingLineNumber = "540"
+            startingLineNumber = "546"
+            endingLineNumber = "546"
             landmarkName = "getGroupActivities(urlString:completion:)"
             landmarkType = "9">
             <Locations>
@@ -558,8 +478,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "547"
-            endingLineNumber = "547"
+            startingLineNumber = "553"
+            endingLineNumber = "553"
             landmarkName = "getGroupActivities(urlString:completion:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -574,8 +494,8 @@
             filePath = "AtlasGoogleCloud/Controllers/GoogleCloudController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "581"
+            endingLineNumber = "581"
             landmarkName = "addActivity(userId:name:description:groupId:completion:)"
             landmarkType = "9">
          </BreakpointContent>

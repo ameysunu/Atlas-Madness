@@ -496,7 +496,12 @@ func getCurrentGroupChats(groupId: String, completion: @escaping (String) -> Voi
 }
 
 func sendMessageToGroup(groupId: String, userId: String, username: String, messageText: String, completion: @escaping (String?, Error?) -> Void) {
-    guard let url = URL(string: "http://localhost:8080/sendMessage/\(groupId)/\(userId)/\(username)/\(messageText)") else {
+    guard let escapedMessageText = messageText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+        completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to escape message text"]))
+        return
+    }
+    
+    guard let url = URL(string: "http://localhost:8080/sendMessage/\(groupId)/\(userId)/\(username)/\(escapedMessageText)") else {
         completion(nil, NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
         return
     }
@@ -507,7 +512,7 @@ func sendMessageToGroup(groupId: String, userId: String, username: String, messa
             "userId": userId,
             "username": username
         ],
-        "content": messageText,
+        "content": escapedMessageText,
         "timestamp": Date().ISO8601Format()
     ]
     
@@ -535,6 +540,7 @@ func sendMessageToGroup(groupId: String, userId: String, username: String, messa
         }
     }.resume()
 }
+
 
 func getGroupActivities(urlString: String, completion: @escaping (Result<[ActivityData], Error>) -> Void) {
     guard let url = URL(string: urlString) else {
