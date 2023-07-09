@@ -246,17 +246,18 @@ func routes(_ app: Application) throws {
         return req.activitiesCollection.find(filter).flatMap { cursor in
             cursor.toArray()
         }.flatMapThrowing { activities in
-            if let activity = activities.first {
+            if !activities.isEmpty {
                 let encoder = JSONEncoder()
-                let data = try encoder.encode(activity)
+                let data = try encoder.encode(activities)
                 let response = Response(status: .ok, body: Response.Body(data: data))
                 response.headers.contentType = .json
                 return response
             } else {
-                return Response(status: .notFound, body: "Activity was not found")
+                return Response(status: .notFound, body: "No activities found for the specified groupId")
             }
         }
     }
+
 }
 
 /*
