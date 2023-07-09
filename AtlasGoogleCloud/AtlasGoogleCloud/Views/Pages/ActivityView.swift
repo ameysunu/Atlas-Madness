@@ -12,33 +12,57 @@ struct ActivityView: View {
     @State private var activities: [ActivityData] = []
 
     var body: some View {
-        VStack {
+        VStack{
+            HStack{
+                Text("Activities")
+                    .font(.custom("EBGaramond-Regular", size: 35))
+                    .padding()
+                Spacer()
+                Button(action:{}){
+                    Image(systemName: "plus")
+                }
+            }
+            .padding()
+            
             ScrollView {
                 ForEach(activities, id: \._id) { activityData in
                     ForEach(activityData.activity, id: \.name) { activity in
-                        VStack(alignment: .leading) {
-                            Text("Name: \(activity.name)")
-                                .font(.headline)
-                            Text("Description: \(activity.description)")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(radius: 2)
-                        .padding(.horizontal)
+                        Rectangle()
+                            .cornerRadius(5)
+                            .offset(x: 4, y: 4)
+                            .frame(height: 100)
+                            .overlay(
+                                Rectangle()
+                                    .stroke(.black, lineWidth: 5)
+                                    .background(.white)
+                                    .cornerRadius(5)
+                                    .overlay(
+                                        VStack(alignment: .leading) {
+                                            Text(activity.name)
+                                                .font(.custom("EBGaramond-Regular", size: 25))
+                                            Text(activity.description)
+                                                .font(.custom("EBGaramond-Regular", size: 20))
+                                            HStack{
+                                                Spacer()
+                                                Text("By: \(activity.userId)")
+                                                    .font(.custom("EBGaramond-Regular", size: 20))
+                                            }
+                                        }
+                                            .padding()
+                                    )
+                            )
                     }
                 }
             }
-        }
-        .onAppear {
-            getGroupActivities(urlString: "http://localhost:8080/activities/\(groupId)") { result in
-                switch result {
-                case .success(let data):
-                    self.activities = data
-                case .failure(let error):
-                    print(error)
+            .padding()
+            .onAppear {
+                getGroupActivities(urlString: "http://localhost:8080/activities/\(groupId)") { result in
+                    switch result {
+                    case .success(let data):
+                        self.activities = data
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
             }
         }
