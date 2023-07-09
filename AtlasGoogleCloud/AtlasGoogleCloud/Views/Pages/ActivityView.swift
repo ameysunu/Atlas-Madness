@@ -70,7 +70,7 @@ struct ActivityView: View {
             }
         }
         .sheet(isPresented: $addActivity) {
-            CreateActivity()
+            CreateActivity(groupId: groupId)
         }
     }
 }
@@ -81,6 +81,8 @@ struct CreateActivity: View {
     var userId: String = getLoginToken()!
     @State var name: String = ""
     @State var description: String = ""
+    @State var groupId: String
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView{
@@ -107,7 +109,13 @@ struct CreateActivity: View {
                     .background(Color(.systemGray6))
                     .padding(.bottom, 10)
                 Spacer()
-                Button(action:{}){
+                Button(action:{
+                    addActivity(userId: userId, name: name, description: description, groupId: groupId) { result in
+                        print(result)
+                        presentationMode.wrappedValue.dismiss()
+                        
+                    }
+                }){
                     Text("Add")
                         .font(.custom("EBGaramond-Regular", size: 20))
                         .padding(8)

@@ -570,3 +570,48 @@ func getGroupActivities(urlString: String, completion: @escaping (Result<[Activi
     
     task.resume()
 }
+
+func addActivity(userId: String, name: String, description: String, groupId: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    let urlString = "http://localhost:8080/addActivity"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        
+        let requestBody: [String: Any] = [
+            "activity": [
+                [
+                    "userId": "\(userId)",
+                    "name": "\(name)",
+                    "description": "\(description)",
+                    "timestamp": "\(Date().ISO8601Format())"
+                ]
+            ],
+            "createdAt": "\(Date().ISO8601Format())",
+            "groupId": "\(groupId)"
+        ]
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            print("Failed to serialize JSON")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Request error: \(error.localizedDescription)")
+                return
+            }
+            
+            // Handle the response
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Response status code: \(httpResponse.statusCode)")
+                // Additional handling of the response if needed
+            }
+        }.resume()
+}
