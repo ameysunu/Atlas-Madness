@@ -114,38 +114,6 @@
             endingLineNumber = "39"
             landmarkName = "registerUser(userId:password:completion:)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "29DA4332-E712-4E31-A038-5F660D1FBEAD - d7f61cfc0fcb5d10"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "AtlasGoogleCloud.registerUser(userId: Swift.String, password: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "AtlasGoogleCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  uuid = "29DA4332-E712-4E31-A038-5F660D1FBEAD - 18fc807bb817dea"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.String) -&gt; () in AtlasGoogleCloud.registerUser(userId: Swift.String, password: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
-                  moduleName = "AtlasGoogleCloud"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "132">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -498,6 +466,102 @@
             endingLineNumber = "581"
             landmarkName = "addActivity(userId:name:description:groupId:completion:)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "204AFADB-D4DB-4286-8936-F909E3AACFDA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/Authentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "encryptWithKMS(plainText:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "204AFADB-D4DB-4286-8936-F909E3AACFDA - f1f027772db82858"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AtlasGoogleCloud.encryptWithKMS(plainText: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "632">
+               </Location>
+               <Location
+                  uuid = "204AFADB-D4DB-4286-8936-F909E3AACFDA - f1f027772db82858"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AtlasGoogleCloud.encryptWithKMS(plainText: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "808">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "879428E9-F709-4752-A720-C469FA985AFD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AtlasGoogleCloud/Controllers/Authentication.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "encryptWithKMS(plainText:completion:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "879428E9-F709-4752-A720-C469FA985AFD - f1f027772db82bed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AtlasGoogleCloud.encryptWithKMS(plainText: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "2276">
+               </Location>
+               <Location
+                  uuid = "879428E9-F709-4752-A720-C469FA985AFD - 1dc8389d3c01ae1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AtlasGoogleCloud.encryptWithKMS(plainText: Swift.String, completion: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "AtlasGoogleCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ameysunu/Desktop/Atlas%20Madness/AtlasGoogleCloud/AtlasGoogleCloud/Controllers/Authentication.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

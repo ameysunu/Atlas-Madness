@@ -122,6 +122,7 @@ struct DetailView: View {
             }
             
             Spacer()
+            // BUG - ADD NAVIGATION TO HOMEVIEW ONCE USER SUBMITS -- 
             if thirdScreen {
                 Button(action: {
                     addUserPreferences(userid: username, age: age, gender: gender, topics: selectedTopics, goals: selectedActivities, preferences: true) { result in
