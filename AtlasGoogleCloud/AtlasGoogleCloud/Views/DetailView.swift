@@ -16,6 +16,7 @@ struct DetailView: View {
     @State var thirdScreen: Bool = false
     @State private var selectedTopics: Set<String> = []
     @State private var selectedActivities: [String] = []
+    @State private var moveToHome: Bool = false
 
     let topics = [
         "Depression Management",
@@ -122,11 +123,13 @@ struct DetailView: View {
             }
             
             Spacer()
-            // BUG - ADD NAVIGATION TO HOMEVIEW ONCE USER SUBMITS -- 
+            // BUG - ADD NAVIGATION TO HOMEVIEW ONCE USER SUBMITS --
+            NavigationLink(destination: HomeView(), isActive: $moveToHome){}
             if thirdScreen {
                 Button(action: {
                     addUserPreferences(userid: username, age: age, gender: gender, topics: selectedTopics, goals: selectedActivities, preferences: true) { result in
                         print(result)
+                        moveToHome = true
                     }
                 }){
                     Text("Submit")
