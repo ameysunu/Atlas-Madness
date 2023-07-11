@@ -301,6 +301,5 @@ func routes(_ app: Application) throws {
    ],
    "createdAt": "2021-05-15T10:30:00Z",
    "updatedAt": "2021-06-20T14:45:00Z"
- }' http://127.0.0.1:8080/
-
+ }' http://127.0.0.1:8080/Lin
  */
